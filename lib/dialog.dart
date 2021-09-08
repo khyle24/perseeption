@@ -1,45 +1,35 @@
 import 'package:flutter/material.dart';
 
-class TextFieldAlertDialog extends StatelessWidget {
-  TextEditingController _textFieldController = TextEditingController();
-
-  _displayDialog(BuildContext context) async {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('What is your Lucky Number'),
-            content: TextField(
-              controller: _textFieldController,
-              textInputAction: TextInputAction.go,
-              keyboardType: TextInputType.numberWithOptions(),
-              decoration: InputDecoration(hintText: "Enter your number"),
-            ),
-            actions: <Widget>[
-              new FlatButton(
-                child: new Text('Submit'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Alert Dilaog with TestFiled'),
-      ),
-      body: Center(
-        child: RaisedButton(
-          child: Text('Write your Number',style: TextStyle(color: Colors.white),),
-          color: Colors.pink,
-          onPressed: () => _displayDialog(context),
+Future _asyncInputDialog(BuildContext context) async {
+  String teamName = '';
+  return showDialog(
+    context: context,
+    barrierDismissible: false, // dialog is dismissible with a tap on the barrier
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Enter current team'),
+        content: new Row(
+          children: [
+            new Expanded(
+                child: new TextField(
+                  autofocus: true,
+                  decoration: new InputDecoration(
+                      labelText: 'Team Name', hintText: 'eg. Juventus F.C.'),
+                  onChanged: (value) {
+                    teamName = value;
+                  },
+                ))
+          ],
         ),
-      ),
-    );
-  }
+        actions: [
+          FlatButton(
+            child: Text('Ok'),
+            onPressed: () {
+              Navigator.of(context).pop(teamName);
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

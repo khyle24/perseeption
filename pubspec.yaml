@@ -21,8 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  shared_preferences: 0.5.7
   flutter:
     sdk: flutter
+
 
 
 
@@ -34,6 +36,7 @@ dependencies:
   random_string: ^2.1.0
   flutter_tts: ^3.0.0
   url_launcher: ^5.5.2
+  flutter_svg: ^0.19.0
   flutter_phone_direct_caller: ^1.0.1
 
 dev_dependencies:
