@@ -4,12 +4,13 @@ import 'package:perseeption/rand.dart';
 import 'package:perseeption/announcement.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
+import 'package:perseeption/try.dart';
 import 'rand.dart';
 import 'dart:math';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart' show getApplicationDocumentsDirectory;
 import 'package:flutter/services.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
@@ -29,6 +30,7 @@ class _Homepagestate extends State<HomePage> {
   var letter;
  var teamName;
   int temp;
+  String callnumber='';
   int num1 = 1,
       num2 = 0,
       num3 = 0,
@@ -36,8 +38,21 @@ class _Homepagestate extends State<HomePage> {
       num5 = 0,
       num6 = 0;
   List l;
-  FlutterTts flutterTts = FlutterTts();
 
+
+  FlutterTts flutterTts = FlutterTts();
+  Future<void> loadPrefs() async {
+    // prefs = await SharedPreferences.getInstance();
+    callnumber = await getText1();
+    setState(() {
+    });
+  }
+
+
+  Future<String> getText1() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('stringValue1');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +73,8 @@ class _Homepagestate extends State<HomePage> {
         onPageChanged: (index) {
           setState(() {
             pageChanged = index;
+            loadPrefs();
+            print(callnumber);
           });
           m = generateRandomString(1);
           temp = 0;
@@ -106,10 +123,32 @@ class _Homepagestate extends State<HomePage> {
 
 
                   onPressed: () {
-                    FlutterPhoneDirectCaller.callNumber("tel:+639566089282");
+
+                    if(callnumber==null)
+                      {
+                         showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: const Text('Alert'),
+                            content: const Text('No Contact Number inserted. Go to the contact form.'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () =>  Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => settingsn()),),
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                    else
+                      {
+                        FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
+                      }
+
 
                   },
-                  child: Image.asset('assets/images/telephone.png',width: 200,height: 200,fit: BoxFit.fill,),
+                  child: Image.asset('assets/images/telephone.png',width: 200,height: 200,fit: BoxFit.fill,semanticLabel: "call"),
                 ),
               ],
             ),
@@ -867,6 +906,96 @@ class _Homepagestate extends State<HomePage> {
               ),
             ),
           ),
+
+
+
+          SafeArea(
+
+
+            child: Padding(
+
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+
+                  Center(
+                    child:  Text(
+                      '$letter',
+                      style: TextStyle(
+                        fontSize: 2,
+                        color: Color(0xFF00315c),
+                        fontFamily: 'gotham',)
+                      ,
+
+
+                    ),),
+
+                  Expanded(
+
+
+                    // child: new Center(
+                    child: GridView.count(
+                      physics: new NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      crossAxisCount: 1,
+                      childAspectRatio: 1.80,
+                      crossAxisSpacing: .90,
+                      mainAxisSpacing: 20,
+
+                      children: <Widget>[
+
+                        FlatButton
+                          (
+
+                          onPressed: () {
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => numbertab()),);
+                          },
+
+                          child: Image.asset( "assets/images/1.png",height: 500,semanticLabel: "NUMBERS",),
+                        ),
+
+
+                        FlatButton
+                          (
+
+                          onPressed: () {
+
+                          },
+
+                          child: Image.asset( "assets/images/4.png",height: 500,semanticLabel: "letters",),
+                        ),
+
+                        FlatButton
+                          (
+                          onPressed: () {
+
+                          },
+
+
+                          child: Image.asset( "assets/images/2.png",height: 500,semanticLabel: "Punctuations",),
+                        ),
+
+
+                      ],
+
+
+                    ),
+
+
+
+
+
+                  ),
+                  //  BottomNavBar()
+                ],
+              ),
+            ),
+          ),
+
+
 
         ],
       ),

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:perseeption/main.dart';
 
 
 class MyHeader extends StatefulWidget {
@@ -51,7 +51,8 @@ class _MyHeaderState extends State<MyHeader> {
               child:IconButton(
                 icon: new Icon(Icons.arrow_back, color: Colors.white),
 
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () =>  Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePage()),)
               ),),
 
 

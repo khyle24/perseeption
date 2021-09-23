@@ -20,7 +20,9 @@ class _InfoScreenState extends State<settingsn> {
   String num1;
   String num2;
   String temp;
-  String ourText = '';
+  String ourText ='';
+  String ourText2 ='';
+  String message='';
   double offset = 0;
   String phone1;
   String _chosenValue;
@@ -30,20 +32,43 @@ class _InfoScreenState extends State<settingsn> {
 
   Future<void> loadPrefs() async {
    // prefs = await SharedPreferences.getInstance();
-   ourText = await getText();
-
+   ourText = await getText1();
+   ourText2 = await getText2();
+   message= await getMes();
    setState(() {
    });
   }
 
-  Future<bool> saveText(String n1) async{
+  Future<bool> saveMes(String m1) async{
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setString('stringMes', m1);
+  }
+  Future<String> getMes() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('stringMes');
+  }
+
+
+  Future<bool> saveText1(String n1) async{
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.setString('stringValue1', n1);
   }
-  Future<String> getText() async{
+  Future<String> getText1() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('stringValue1');
+  }
+
+
+  Future<bool> saveText2(String n2) async{
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setString('stringValue2', n2);
+  }
+  Future<String> getText2() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('stringValue2');
   }
 
 
@@ -154,13 +179,18 @@ class _InfoScreenState extends State<settingsn> {
                   RoundedButton(
                     text: "SAVE",
                     press: () async {
-                      print(await saveText(num1));
 
-                        ourText = await getText();
+
+
+                      print(await saveText1(num1));
+
+                        ourText = await getText1();
+                      print(await saveText2(num2));
+                      ourText2 = await getText2();
+                      print(await saveMes(_chosenValue));
+                      message = await getMes();
                         setState(() {
                         });
-
-
 
 
                     },
@@ -172,12 +202,13 @@ class _InfoScreenState extends State<settingsn> {
 
                      Text(
                    "1st Number:$ourText\n \n"
-                     //     "2nd Number:$getValuesNum2\n \n"
-                          "Message Selected: \n$_chosenValue",
+                     "2nd Number:$ourText2\n \n"
+                          "Message Selected: \n$message",
 
                       style: TextStyle(fontSize: 12,fontFamily: 'gotham', letterSpacing: 1.0,
                           color: Color(0xFF00315c)),
                       textAlign: TextAlign.left,),
+
                 ],
               ),
 
