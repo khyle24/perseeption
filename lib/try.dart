@@ -38,6 +38,7 @@ class _InfoScreenState extends State<numbertab> {
       await flutterTts.setSpeechRate(0.9);
       await flutterTts.speak(tlk);
     }
+    Size size = MediaQuery.of(context).size;
    return Scaffold(
 
 body: SafeArea(
