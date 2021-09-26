@@ -148,7 +148,7 @@ class _Homepagestate extends State<HomePage> {
 
 
                   },
-                  child: Image.asset('assets/images/telephone.png',width: 200,height: 200,fit: BoxFit.fill,semanticLabel: "call"),
+                  child: Image.asset('assets/images/telephone.png',width: 350,height: 350,fit: BoxFit.fill,semanticLabel: "call"),
                 ),
               ],
             ),
@@ -924,7 +924,7 @@ class _Homepagestate extends State<HomePage> {
                     child:  Text(
                       '$letter',
                       style: TextStyle(
-                        fontSize: 2,
+                        fontSize: 10,
                         color: Color(0xFF00315c),
                         fontFamily: 'gotham',)
                       ,
@@ -954,7 +954,7 @@ class _Homepagestate extends State<HomePage> {
                               MaterialPageRoute(builder: (context) => numbertab()),);
                           },
 
-                          child: Image.asset( "assets/images/1.png",height: 500,semanticLabel: "NUMBERS",),
+                          child: Image.asset( "assets/images/numb.png",height: 500,semanticLabel: "NUMBERS",),
                         ),
 
 
@@ -965,7 +965,7 @@ class _Homepagestate extends State<HomePage> {
 
                           },
 
-                          child: Image.asset( "assets/images/4.png",height: 500,semanticLabel: "letters",),
+                          child: Image.asset( "assets/images/lett.png",height: 500,semanticLabel: "letters",),
                         ),
 
                         FlatButton
@@ -975,7 +975,7 @@ class _Homepagestate extends State<HomePage> {
                           },
 
 
-                          child: Image.asset( "assets/images/2.png",height: 500,semanticLabel: "Punctuations",),
+                          child: Image.asset( "assets/images/punct.png",height: 500,semanticLabel: "Punctuations",),
                         ),
 
 
