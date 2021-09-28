@@ -73,21 +73,20 @@ class _Homepagestate extends State<HomePage> {
         onPageChanged: (index) {
           setState(() {
             pageChanged = index;
+            flutterTts.stop();
             loadPrefs();
             print(callnumber);
           });
-          m = generateRandomString(1);
-          temp = 0;
-          letter = let(temp);
-          print(m);
-          num1 = 1;
-          num2 = 0;
-          num3 = 0;
-          num4 = 0;
-          num5 = 0;
-          num6 = 0;
-          if (index == 2) {
 
+          if (index == 2) {
+temp=0;
+letter = let(temp);
+num1 = 1;
+num2 = 0;
+num3 = 0;
+num4 = 0;
+num5 = 0;
+num6 = 0;
             speak("This is the Demo");
             Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
               //code to run on every 5 seconds
@@ -98,13 +97,21 @@ class _Homepagestate extends State<HomePage> {
 
           }
           if (index == 3) {
-            letter = let(temp);
+            num1 = 1;
+          num2 = 0;
+          num3 = 0;
+          num4 = 0;
+          num5 = 0;
+          num6 = 0;
+            temp=0;
+         letter = let(temp);
+         print(letter);
+
              time();
 
           speak("Instructions: Tap the button that corresponds to the combination of letter, it will inform you if you tap the wrong combination but proceeds if you got it right the first you need to answer is letter"+letter);
 
           }
-
 
          
         },
@@ -163,14 +170,10 @@ class _Homepagestate extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
 
-
-              //  crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
 
                         Container(
 
-
-    // child: new Center(
                        child: GridView.count(
                   physics: new NeverScrollableScrollPhysics(),
                  shrinkWrap: true,
@@ -299,8 +302,6 @@ class _Homepagestate extends State<HomePage> {
 
                         FlatButton
                           (
-
-
 
                           onPressed: () {
                             int orig=b1(letter);
@@ -786,11 +787,13 @@ class _Homepagestate extends State<HomePage> {
                                 sum = sum - 1;
                                 print(num5);
                                 print(sum);
+                                speak("Correct");
                                 if (sum == 0) {
                                   setState(() {
                                     HapticFeedback.lightImpact();
                                     temp = temp + 1;
                                     letter = let(temp);
+                                    speak(letter);
                                     num1 = b1(letter);
                                     num2 = b2(letter);
                                     num3 = b3(letter);

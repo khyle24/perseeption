@@ -99,8 +99,6 @@ class _InfoScreenState extends State<settingsn> {
   @override
   Widget build(BuildContext context) {
 
-
-
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(

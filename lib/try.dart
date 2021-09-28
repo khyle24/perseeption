@@ -29,6 +29,17 @@ class _InfoScreenState extends State<numbertab> {
   var letter;
   int temp;
 
+  Future<void> loadPrefs() async {
+    // prefs = await SharedPreferences.getInstance();
+
+    temp=0;
+
+    letter = number(temp);
+    setState(() {
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     FlutterTts flutterTts = FlutterTts();
@@ -38,10 +49,15 @@ class _InfoScreenState extends State<numbertab> {
       await flutterTts.setSpeechRate(0.9);
       await flutterTts.speak(tlk);
     }
+
+    loadPrefs();
+
+
     Size size = MediaQuery.of(context).size;
    return Scaffold(
 
 body: SafeArea(
+
       child: Padding(
 
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -58,8 +74,6 @@ body: SafeArea(
                   color: Color(0xFF00315c),
                   fontFamily: 'gotham',)
                 ,
-
-
               ),),
 
             Expanded(
@@ -75,13 +89,14 @@ body: SafeArea(
                 mainAxisSpacing: 20,
 
                 children: <Widget>[
-
                   FlatButton
                     (
 
 
+
                     onPressed: () {
-                      int orig = b1(letter);
+
+                      int orig=b1(letter);
                       print(orig);
                       print(letter);
 
@@ -89,7 +104,7 @@ body: SafeArea(
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter " + letter);
+                          speak("wrong You need to answer is letter "+letter);
                         }
                         else if (num1 == 0) {
                           speak("clicked this already");
@@ -104,7 +119,7 @@ body: SafeArea(
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
-                              letter = let(temp);
+                              letter = number(temp);
                               num1 = b1(letter);
                               num2 = b2(letter);
                               num3 = b3(letter);
@@ -118,8 +133,7 @@ body: SafeArea(
                       }
                     },
 
-                    child: Image.asset(
-                      "assets/images/1.png", height: 550, semanticLabel: "1",),
+                    child: Image.asset( "assets/images/1.png",height: 550,semanticLabel: "1",),
                   ),
 
 
@@ -127,7 +141,7 @@ body: SafeArea(
                     (
 
                     onPressed: () {
-                      int orig = b4(letter);
+                      int orig=b4(letter);
                       print(orig);
                       print(letter);
 
@@ -135,7 +149,7 @@ body: SafeArea(
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter " + letter);
+                          speak("wrong You need to answer is letter "+letter);
                         }
                         else if (num4 == 0) {
                           speak("clicked this already");
@@ -151,7 +165,7 @@ body: SafeArea(
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
 
-                              letter = let(temp);
+                              letter = number(temp);
                               speak(letter);
                               num1 = b1(letter);
                               num2 = b2(letter);
@@ -165,14 +179,13 @@ body: SafeArea(
                       }
                     },
 
-                    child: Image.asset(
-                      "assets/images/4.png", height: 550, semanticLabel: "4",),
+                    child: Image.asset( "assets/images/4.png",height: 550,semanticLabel: "4",),
                   ),
 
                   FlatButton
                     (
                     onPressed: () {
-                      int orig = b2(letter);
+                      int orig=b2(letter);
                       print(orig);
                       print(letter);
 
@@ -180,7 +193,7 @@ body: SafeArea(
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter " + letter);
+                          speak("wrong You need to answer is letter "+letter);
                         }
                         else if (num2 == 0) {
                           speak("clicked this already");
@@ -196,7 +209,7 @@ body: SafeArea(
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
 
-                              letter = let(temp);
+                              letter = number(temp);
                               speak(letter);
                               num1 = b1(letter);
                               num2 = b2(letter);
@@ -211,14 +224,15 @@ body: SafeArea(
                     },
 
 
-                    child: Image.asset(
-                      "assets/images/2.png", height: 550, semanticLabel: "2",),
+                    child: Image.asset( "assets/images/2.png",height: 550,semanticLabel: "2",),
                   ),
 
                   FlatButton
                     (
                     onPressed: () {
-                      int orig = b5(letter);
+
+
+                      int orig=b5(letter);
                       print(orig);
                       print(letter);
 
@@ -226,7 +240,7 @@ body: SafeArea(
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter " + letter);
+                          speak("wrong You need to answer is letter "+letter);
                         }
                         else if (num5 == 0) {
                           speak("clicked this already");
@@ -240,7 +254,7 @@ body: SafeArea(
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
-                              letter = let(temp);
+                              letter = number(temp);
                               num1 = b1(letter);
                               num2 = b2(letter);
                               num3 = b3(letter);
@@ -254,13 +268,12 @@ body: SafeArea(
 
                       HapticFeedback.heavyImpact();
                     },
-                    child: Image.asset(
-                      "assets/images/5.png", height: 550, semanticLabel: "5",),
+                    child: Image.asset( "assets/images/5.png",height: 550,semanticLabel: "5",),
                   ),
                   FlatButton
                     (
                     onPressed: () {
-                      int orig = b3(letter);
+                      int orig=b3(letter);
                       print(orig);
                       print(letter);
 
@@ -268,7 +281,7 @@ body: SafeArea(
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter " + letter);
+                          speak("wrong You need to answer is letter "+letter);
                         }
                         else if (num3 == 0) {
                           speak("clicked this already");
@@ -282,7 +295,7 @@ body: SafeArea(
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
-                              letter = let(temp);
+                              letter = number(temp);
                               num1 = b1(letter);
                               num2 = b2(letter);
                               num3 = b3(letter);
@@ -293,15 +306,16 @@ body: SafeArea(
                           }
                         }
                       }
+
                     },
-                    child: Image.asset(
-                      "assets/images/3.png", height: 550, semanticLabel: "3",),
+                    child: Image.asset( "assets/images/3.png",height: 550,semanticLabel: "3",),
                   ),
 
                   FlatButton
                     (
                     onPressed: () {
-                      int orig = b6(letter);
+
+                      int orig=b6(letter);
                       print(orig);
                       print(letter);
 
@@ -309,7 +323,8 @@ body: SafeArea(
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter " + letter);
+                          speak("wrong You need to answer is letter "+letter);
+
                         }
                         else if (num6 == 0) {
                           speak("clicked this already");
@@ -323,7 +338,7 @@ body: SafeArea(
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
                               speak(letter);
-                              letter = let(temp);
+                              letter = number(temp);
                               num1 = b1(letter);
                               num2 = b2(letter);
                               num3 = b3(letter);
@@ -335,15 +350,18 @@ body: SafeArea(
                         }
                       }
                     },
-                    child: Image.asset(
-                      "assets/images/6.png", height: 550, semanticLabel: "6",),
+                    child: Image.asset( "assets/images/6.png",height: 550,semanticLabel: "6",),
                   ),
+
 
 
                 ],
 
 
               ),
+
+
+
 
 
             ),

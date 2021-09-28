@@ -21,30 +21,36 @@ String let(int num)
   return arr[num];
 }
 
+String number(int num)
+{
+  var arr = new List(7);
+  arr[0] = '1';
+  arr[1] = '2';
+  arr[2] = '3';
+  arr[3] = '4';
+  arr[4] = '5';
+  return arr[num];
+}
+
 int b1(String letter)
 {
- // String letter="a";
-  int temp;
+
   var arr = new List(7);
 arr[0]=0;
-if(letter=="A"||letter=="B"||letter=="C")
+if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D")
   {
 
     arr[0]=1;
   }
-
-
   return arr[0];
 }
-
-
 
 int b2(String letter)
 {
 
   var arr = new List(7);
   arr[1]=0;
-  if(letter=="B")
+  if(letter=="B"||letter=="2")
   {
 
     arr[1]=1;
@@ -75,7 +81,7 @@ int b4(String letter)
   var arr = new List(7);
 
   arr[3]=0;
-  if(letter=="C")
+  if(letter=="C"||letter=="D")
   {
 
     arr[3]=1;
@@ -92,11 +98,15 @@ int b5(String letter)
   var arr = new List(7);
 
   arr[4]=0;
+  if(letter=="D")
+  {
+
+    arr[4]=1;
+  }
 
 
   return arr[4];
 }
-
 
 int b6(String letter)
 {
