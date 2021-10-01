@@ -5,6 +5,7 @@ import 'package:perseeption/announcement.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
 import 'package:perseeption/try.dart';
+import 'package:perseeption/screensize.dart';
 import 'rand.dart';
 import 'dart:math';
 import 'package:sqflite/sqflite.dart';
@@ -38,7 +39,7 @@ class _Homepagestate extends State<HomePage> {
       num5 = 0,
       num6 = 0;
   List l;
-
+  int h;
 
   FlutterTts flutterTts = FlutterTts();
   Future<void> loadPrefs() async {
@@ -56,8 +57,23 @@ class _Homepagestate extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    double height = MediaQuery.of(context).size.height;
+print(height);
+    double yourWidth;
+    if(height>700)
+      {
+        yourWidth = 640 * 0.80 /height;
+      }
+    else
+      {
+        yourWidth = 640 * 0.90 /height;
+      }
+    String number = yourWidth.toStringAsFixed(2);
+    double result = double.parse(number);
+    print(result);
     final PageController controller = PageController(initialPage: 1);
+
+    Size screenSize = MediaQuery.of(context).size;
     Future speak(String tlk) async {
       await flutterTts.setLanguage("en-US");
       await flutterTts.setPitch(0.8);
@@ -87,6 +103,7 @@ num3 = 0;
 num4 = 0;
 num5 = 0;
 num6 = 0;
+
             speak("This is the Demo");
             Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
               //code to run on every 5 seconds
@@ -98,14 +115,14 @@ num6 = 0;
           }
           if (index == 3) {
             num1 = 1;
-          num2 = 0;
-          num3 = 0;
-          num4 = 0;
-          num5 = 0;
-          num6 = 0;
+            num2 = 0;
+            num3 = 0;
+            num4 = 0;
+            num5 = 0;
+            num6 = 0;
             temp=0;
-         letter = let(temp);
-         print(letter);
+            letter = let(temp);
+
 
              time();
 
@@ -210,6 +227,7 @@ num6 = 0;
 
                   Expanded(
                     child: new Column(
+
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
 
@@ -263,8 +281,7 @@ num6 = 0;
 
 
 
-          SafeArea(
-
+        SafeArea(
 
             child: Padding(
 
@@ -278,7 +295,7 @@ num6 = 0;
                     child:  Text(
                       'Demo:$letter',
                       style: TextStyle(
-                        fontSize: 40,
+                        fontSize: 35,
                         color: Color(0xFF00315c),
                         fontFamily: 'gotham',)
                       ,
@@ -286,17 +303,18 @@ num6 = 0;
 
                     ),),
 
-                  Expanded(
+                  Container(
 
-
-                    // child: new Center(
+                    width: MediaQuery.of(context).size.width*.95,
+                   height: MediaQuery.of(context).size.height*.90,
                     child: GridView.count(
                       physics: new NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: 2,
-                      childAspectRatio: .70,
+                      childAspectRatio: result,
                       crossAxisSpacing: 40,
                       mainAxisSpacing: 20,
+
 
                       children: <Widget>[
 

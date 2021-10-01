@@ -19,29 +19,20 @@ class numbertab extends StatefulWidget {
 }
 
 class _InfoScreenState extends State<numbertab> {
-
+  int pageChanged = 1;
+  var numi;
+  int temp=0;
   int num1 = 1,
       num2 = 0,
       num3 = 0,
       num4 = 0,
       num5 = 0,
       num6 = 0;
-  var letter;
-  int temp;
-
-  Future<void> loadPrefs() async {
-    // prefs = await SharedPreferences.getInstance();
-
-    temp=0;
-
-    letter = number(temp);
-    setState(() {
-    });
-  }
 
 
   @override
   Widget build(BuildContext context) {
+    final PageController controller = PageController(initialPage: 1);
     FlutterTts flutterTts = FlutterTts();
     Future speak(String tlk) async {
       await flutterTts.setLanguage("en-US");
@@ -50,17 +41,48 @@ class _InfoScreenState extends State<numbertab> {
       await flutterTts.speak(tlk);
     }
 
-    loadPrefs();
-
 
     Size size = MediaQuery.of(context).size;
+
    return Scaffold(
 
-body: SafeArea(
 
-      child: Padding(
+body: PageView(
 
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+    onPageChanged: (index) {
+      setState(() {
+        pageChanged = index;
+        flutterTts.stop();
+      //  loadPrefs();
+      });
+
+      if (index == 0) {
+        num1 = 1;
+        num2 = 0;
+        num3 = 0;
+        num4 = 0;
+        num5 = 0;
+        num6 = 0;
+        temp=0;
+        numi = number(temp);
+        speak("This is the Demo");
+        Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
+          //code to run on every 5 seconds
+          //   letter = let(temp);
+          //   speak("You need to answer is letter"+letter);
+        });
+
+
+      }
+
+    },
+
+    controller: controller,
+      children: [
+SafeArea(
+
+child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
 
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,13 +90,14 @@ body: SafeArea(
 
             Center(
               child: Text(
-                'Demo:$letter',
+                '$numi',
                 style: TextStyle(
                   fontSize: 40,
                   color: Color(0xFF00315c),
                   fontFamily: 'gotham',)
                 ,
               ),),
+
 
             Expanded(
 
@@ -91,20 +114,16 @@ body: SafeArea(
                 children: <Widget>[
                   FlatButton
                     (
-
-
-
                     onPressed: () {
-
-                      int orig=b1(letter);
+                      int orig=b1(numi);
                       print(orig);
-                      print(letter);
+                      print(numi);
 
                       int sum = num1 + num2 + num3 + num4 + num5 + num6;
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+letter);
+                          speak("wrong You need to answer is letter "+numi);
                         }
                         else if (num1 == 0) {
                           speak("clicked this already");
@@ -119,14 +138,15 @@ body: SafeArea(
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
-                              letter = number(temp);
-                              num1 = b1(letter);
-                              num2 = b2(letter);
-                              num3 = b3(letter);
-                              num4 = b4(letter);
-                              num5 = b5(letter);
-                              num6 = b6(letter);
-                              speak(letter);
+                              numi = number(temp);
+                              num1 = b1(numi);
+                              num2 = b2(numi);
+                              num3 = b3(numi);
+                              num4 = b4(numi);
+                              num5 = b5(numi);
+                              num6 = b6(numi);
+                                speak(numi);
+                              print(numi+"huwew");
                             });
                           }
                         }
@@ -141,15 +161,15 @@ body: SafeArea(
                     (
 
                     onPressed: () {
-                      int orig=b4(letter);
+                      int orig=b4(numi);
                       print(orig);
-                      print(letter);
+                      print(numi);
 
                       int sum = num1 + num2 + num3 + num4 + num5 + num6;
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+letter);
+                          speak("wrong You need to answer is letter "+numi);
                         }
                         else if (num4 == 0) {
                           speak("clicked this already");
@@ -165,14 +185,14 @@ body: SafeArea(
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
 
-                              letter = number(temp);
-                              speak(letter);
-                              num1 = b1(letter);
-                              num2 = b2(letter);
-                              num3 = b3(letter);
-                              num4 = b4(letter);
-                              num5 = b5(letter);
-                              num6 = b6(letter);
+                              numi = number(temp);
+                              speak(numi);
+                              num1 = b1(numi);
+                              num2 = b2(numi);
+                              num3 = b3(numi);
+                              num4 = b4(numi);
+                              num5 = b5(numi);
+                              num6 = b6(numi);
                             });
                           }
                         }
@@ -185,15 +205,15 @@ body: SafeArea(
                   FlatButton
                     (
                     onPressed: () {
-                      int orig=b2(letter);
+                      int orig=b2(numi);
                       print(orig);
-                      print(letter);
+                      print(numi);
 
                       int sum = num1 + num2 + num3 + num4 + num5 + num6;
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+letter);
+                          speak("wrong You need to answer is letter "+numi);
                         }
                         else if (num2 == 0) {
                           speak("clicked this already");
@@ -209,14 +229,14 @@ body: SafeArea(
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
 
-                              letter = number(temp);
-                              speak(letter);
-                              num1 = b1(letter);
-                              num2 = b2(letter);
-                              num3 = b3(letter);
-                              num4 = b4(letter);
-                              num5 = b5(letter);
-                              num6 = b6(letter);
+                              numi = number(temp);
+                              speak(numi);
+                              num1 = b1(numi);
+                              num2 = b2(numi);
+                              num3 = b3(numi);
+                              num4 = b4(numi);
+                              num5 = b5(numi);
+                              num6 = b6(numi);
                             });
                           }
                         }
@@ -232,15 +252,15 @@ body: SafeArea(
                     onPressed: () {
 
 
-                      int orig=b5(letter);
+                      int orig=b5(numi);
                       print(orig);
-                      print(letter);
+                      print(numi);
 
                       int sum = num1 + num2 + num3 + num4 + num5 + num6;
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+letter);
+                          speak("wrong You need to answer is letter "+numi);
                         }
                         else if (num5 == 0) {
                           speak("clicked this already");
@@ -254,13 +274,13 @@ body: SafeArea(
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
-                              letter = number(temp);
-                              num1 = b1(letter);
-                              num2 = b2(letter);
-                              num3 = b3(letter);
-                              num4 = b4(letter);
-                              num5 = b5(letter);
-                              num6 = b6(letter);
+                              numi = number(temp);
+                              num1 = b1(numi);
+                              num2 = b2(numi);
+                              num3 = b3(numi);
+                              num4 = b4(numi);
+                              num5 = b5(numi);
+                              num6 = b6(numi);
                             });
                           }
                         }
@@ -273,15 +293,15 @@ body: SafeArea(
                   FlatButton
                     (
                     onPressed: () {
-                      int orig=b3(letter);
+                      int orig=b3(numi);
                       print(orig);
-                      print(letter);
+                      print(numi);
 
                       int sum = num1 + num2 + num3 + num4 + num5 + num6;
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+letter);
+                          speak("wrong You need to answer is letter "+numi);
                         }
                         else if (num3 == 0) {
                           speak("clicked this already");
@@ -295,13 +315,13 @@ body: SafeArea(
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
-                              letter = number(temp);
-                              num1 = b1(letter);
-                              num2 = b2(letter);
-                              num3 = b3(letter);
-                              num4 = b4(letter);
-                              num5 = b5(letter);
-                              num6 = b6(letter);
+                              numi = number(temp);
+                              num1 = b1(numi);
+                              num2 = b2(numi);
+                              num3 = b3(numi);
+                              num4 = b4(numi);
+                              num5 = b5(numi);
+                              num6 = b6(numi);
                             });
                           }
                         }
@@ -315,15 +335,15 @@ body: SafeArea(
                     (
                     onPressed: () {
 
-                      int orig=b6(letter);
+                      int orig=b6(numi);
                       print(orig);
-                      print(letter);
+                      print(numi);
 
                       int sum = num1 + num2 + num3 + num4 + num5 + num6;
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+letter);
+                          speak("wrong You need to answer is letter "+numi);
 
                         }
                         else if (num6 == 0) {
@@ -337,14 +357,14 @@ body: SafeArea(
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
-                              speak(letter);
-                              letter = number(temp);
-                              num1 = b1(letter);
-                              num2 = b2(letter);
-                              num3 = b3(letter);
-                              num4 = b4(letter);
-                              num5 = b5(letter);
-                              num6 = b6(letter);
+                              speak(numi);
+                              numi = number(temp);
+                              num1 = b1(numi);
+                              num2 = b2(numi);
+                              num3 = b3(numi);
+                              num4 = b4(numi);
+                              num5 = b5(numi);
+                              num6 = b6(numi);
                             });
                           }
                         }
@@ -369,7 +389,7 @@ body: SafeArea(
           ],
         ),
       ),
-    ),);
+)    ]),);
 
 
   }

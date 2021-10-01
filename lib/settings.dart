@@ -199,9 +199,9 @@ class _InfoScreenState extends State<settingsn> {
 
 
                      Text(
-                   "1st Number:$ourText\n \n"
-                     "2nd Number:$ourText2\n \n"
-                          "Message Selected: \n$message",
+                   "1st Number:$ourText?? ''\n \n"
+                     "2nd Number:$ourText2?? ''\n \n"
+                          "Message Selected: \n$message?? ''",
 
                       style: TextStyle(fontSize: 12,fontFamily: 'gotham', letterSpacing: 1.0,
                           color: Color(0xFF00315c)),
