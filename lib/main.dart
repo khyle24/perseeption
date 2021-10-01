@@ -103,13 +103,13 @@ num3 = 0;
 num4 = 0;
 num5 = 0;
 num6 = 0;
-
-            speak("This is the Demo");
-            Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
-              //code to run on every 5 seconds
-           //   letter = let(temp);
+          //  Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
+          //         //code to run on every 5 seconds
+              //  letter = let(temp);
            //   speak("You need to answer is letter"+letter);
-            });
+          //   });
+            speak("This is the Demo");
+
 
 
           }
@@ -311,7 +311,7 @@ num6 = 0;
                       physics: new NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: 2,
-                      childAspectRatio: result,
+                      childAspectRatio: MediaQuery.of(context).size.height /950,
                       crossAxisSpacing: 40,
                       mainAxisSpacing: 20,
 
@@ -953,15 +953,16 @@ num6 = 0;
 
                     ),),
 
-                  Expanded(
+                  Container(
 
-
+                    width: MediaQuery.of(context).size.width*.95,
+                    height: MediaQuery.of(context).size.height*.90,
                     // child: new Center(
                     child: GridView.count(
                       physics: new NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: 1,
-                      childAspectRatio: 1.80,
+                      childAspectRatio: MediaQuery.of(context).size.height /450,
                       crossAxisSpacing: .90,
                       mainAxisSpacing: 20,
 
