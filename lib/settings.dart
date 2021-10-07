@@ -20,8 +20,8 @@ class _InfoScreenState extends State<settingsn> {
   String num1;
   String num2;
   String temp;
-  String ourText ='';
-  String ourText2 ='';
+  String ourText=" ";
+  String ourText2 =" ";
   String message='';
   double offset = 0;
   String phone1;
@@ -35,6 +35,10 @@ class _InfoScreenState extends State<settingsn> {
    ourText = await getText1();
    ourText2 = await getText2();
    message= await getMes();
+   if(ourText2==null)
+     {
+       ourText2=="HI";
+     }
    setState(() {
    });
   }
@@ -132,6 +136,7 @@ class _InfoScreenState extends State<settingsn> {
                     onChanged: (value1) {
                       num1=value1;
                     },
+
                   ),
                   RoundedInputField(
                     hintText: "2nd Cellphone Number",
@@ -178,11 +183,20 @@ class _InfoScreenState extends State<settingsn> {
                     text: "SAVE",
                     press: () async {
 
+                      if(num1.isEmpty || !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num1)){
+                        setState(() {
+                        print("sad");
+                        });
+                      }else {
+
+                          print("gago");
+                          print(await saveText1(num1));
+                          ourText = await getText1();
+                          setState(() {
+                          });
+                      }
 
 
-                      print(await saveText1(num1));
-
-                        ourText = await getText1();
                       print(await saveText2(num2));
                       ourText2 = await getText2();
                       print(await saveMes(_chosenValue));
@@ -199,9 +213,9 @@ class _InfoScreenState extends State<settingsn> {
 
 
                      Text(
-                   "1st Number:$ourText?? ''\n \n"
-                     "2nd Number:$ourText2?? ''\n \n"
-                          "Message Selected: \n$message?? ''",
+                   "1st Number:$ourText?? ""\n \n"
+                     "2nd Number:$ourText2\n \n"
+                          "Message Selected: \n$message?? """,
 
                       style: TextStyle(fontSize: 12,fontFamily: 'gotham', letterSpacing: 1.0,
                           color: Color(0xFF00315c)),

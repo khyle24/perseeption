@@ -4,7 +4,7 @@ import 'package:perseeption/rand.dart';
 import 'package:perseeption/announcement.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
-import 'package:perseeption/try.dart';
+import 'package:perseeption/numbers.dart';
 import 'package:perseeption/screensize.dart';
 import 'rand.dart';
 import 'dart:math';
