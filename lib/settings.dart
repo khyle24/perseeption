@@ -5,7 +5,7 @@ import 'package:perseeption/components/RoundedInputField.dart';
 import 'package:perseeption/components/rounded_button.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:telephony/telephony.dart';
 class settingsn extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
@@ -22,10 +22,12 @@ class _InfoScreenState extends State<settingsn> {
   String temp;
   String ourText=" ";
   String ourText2 =" ";
-  String message='';
+  String message="";
   double offset = 0;
   String phone1;
   String _chosenValue;
+  final Telephony telephony = Telephony.instance;
+
 
 
   SharedPreferences prefs;
@@ -35,10 +37,7 @@ class _InfoScreenState extends State<settingsn> {
    ourText = await getText1();
    ourText2 = await getText2();
    message= await getMes();
-   if(ourText2==null)
-     {
-       ourText2=="HI";
-     }
+   bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
    setState(() {
    });
   }
@@ -199,6 +198,7 @@ class _InfoScreenState extends State<settingsn> {
 
                       print(await saveText2(num2));
                       ourText2 = await getText2();
+
                       print(await saveMes(_chosenValue));
                       message = await getMes();
                         setState(() {
@@ -213,9 +213,9 @@ class _InfoScreenState extends State<settingsn> {
 
 
                      Text(
-                   "1st Number:$ourText?? ""\n \n"
+                   "1st Number:$ourText \n \n"
                      "2nd Number:$ourText2\n \n"
-                          "Message Selected: \n$message?? """,
+                          "Message Selected: \n$message",
 
                       style: TextStyle(fontSize: 12,fontFamily: 'gotham', letterSpacing: 1.0,
                           color: Color(0xFF00315c)),

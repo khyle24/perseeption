@@ -22,11 +22,10 @@ environment:
 
 dependencies:
   shared_preferences: 0.5.7
+  telephony: 0.0.9
   flutter:
     sdk: flutter
-
-
-
+  validators: 2.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -42,14 +41,17 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
+  # This section identifies this Flutter project as a plugin project.
+  # The 'pluginClass' and Android 'package' identifiers should not ordinarily
+  # be modified. They are used by the tooling to maintain consistency when
+  # adding or updating assets for this project.
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

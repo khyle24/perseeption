@@ -7,15 +7,12 @@ import 'package:perseeption/timer.dart';
 import 'package:perseeption/numbers.dart';
 import 'package:perseeption/screensize.dart';
 import 'rand.dart';
-import 'dart:math';
-import 'package:sqflite/sqflite.dart';
-import 'package:path_provider/path_provider.dart' show getApplicationDocumentsDirectory;
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
-
-
+import 'package:perseeption/sms_auto_sender.dart';
+import 'package:telephony/telephony.dart';
 void main() => runApp(MaterialApp(home: HomePage(),));
 
 class HomePage extends StatefulWidget {
@@ -40,6 +37,11 @@ class _Homepagestate extends State<HomePage> {
       num6 = 0;
   List l;
   int h;
+
+  final Telephony telephony = Telephony.instance;
+
+
+
 
   FlutterTts flutterTts = FlutterTts();
   Future<void> loadPrefs() async {
@@ -174,6 +176,19 @@ num6 = 0;
                   },
                   child: Image.asset('assets/images/telephone.png',width: 350,height: 350,fit: BoxFit.fill,semanticLabel: "call"),
                 ),
+
+                FlatButton (
+                    onPressed: ()async {
+                     // sendSms();
+                      bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
+                      telephony.sendSms(
+                          to: "09566089285",
+                          message: "May the force be with you!"
+                      );
+                    },
+                    child: Text(
+                      "Request permission",
+                    )),
               ],
             ),
           ),

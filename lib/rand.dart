@@ -29,6 +29,11 @@ String number(int num)
   arr[2] = '3';
   arr[3] = '4';
   arr[4] = '5';
+  arr[5] = '6';
+  arr[6] = '7';
+  arr[7] = '8';
+  arr[8] = '9';
+  arr[9] = '0';
   return arr[num];
 }
 
