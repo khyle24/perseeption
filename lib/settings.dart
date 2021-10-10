@@ -182,34 +182,28 @@ class _InfoScreenState extends State<settingsn> {
                     text: "SAVE",
                     press: () async {
 
-                      if(num1.isEmpty || !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num1)){
+                      if(num1==null && !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num1)&&num2==null && !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num2)&&_chosenValue==null){
                         setState(() {
                         print("sad");
                         });
                       }else {
-
-                          print("gago");
                           print(await saveText1(num1));
                           ourText = await getText1();
+
+                          print(await saveText2(num2));
+                          ourText2 = await getText2();
+
+                          print(await saveMes(_chosenValue));
+                          message = await getMes();
                           setState(() {
                           });
                       }
-
-
-                      print(await saveText2(num2));
-                      ourText2 = await getText2();
-
-                      print(await saveMes(_chosenValue));
-                      message = await getMes();
-                        setState(() {
-                        });
-
-
                     },
 
 
                   ),
                   SizedBox(height: size.height * 0.01),
+
 
 
                      Text(

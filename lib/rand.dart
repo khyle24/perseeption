@@ -11,19 +11,34 @@ String generateRandomString(int len) {
 
 String let(int num)
 {
-  var arr = new List(7);
+  var arr = new List(20);
   arr[0] = 'A';
   arr[1] = 'B';
   arr[2] = 'C';
   arr[3] = 'D';
   arr[4] = 'E';
+  arr[5] = 'F';
+  arr[6] = 'G';
+  arr[7] = 'H';
+  arr[8] = 'I';
+  arr[9] = 'J';
+  arr[10] = 'K';
+  arr[11] = 'L';
+  arr[12] = 'M';
+  arr[13] = 'N';
+  arr[14] = 'O';
+  arr[15] = 'P';
+  arr[16] = 'Q';
+  arr[17] = 'R';
+  arr[18] = 'S';
+  arr[19] = 'T';
 
   return arr[num];
 }
 
 String number(int num)
 {
-  var arr = new List(7);
+  var arr = new List(10);
   arr[0] = '1';
   arr[1] = '2';
   arr[2] = '3';
@@ -42,7 +57,7 @@ int b1(String letter)
 
   var arr = new List(7);
 arr[0]=0;
-if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D")
+if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D"||letter=="3"||letter=="4")
   {
 
     arr[0]=1;
@@ -86,7 +101,7 @@ int b4(String letter)
   var arr = new List(7);
 
   arr[3]=0;
-  if(letter=="C"||letter=="D")
+  if(letter=="C"||letter=="D"||letter=="3"||letter=="4")
   {
 
     arr[3]=1;
@@ -103,7 +118,7 @@ int b5(String letter)
   var arr = new List(7);
 
   arr[4]=0;
-  if(letter=="D")
+  if(letter=="D"||letter=="4")
   {
 
     arr[4]=1;

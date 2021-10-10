@@ -5,6 +5,7 @@ import 'package:perseeption/announcement.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
 import 'package:perseeption/numbers.dart';
+import 'package:perseeption/letters.dart';
 import 'package:perseeption/screensize.dart';
 import 'rand.dart';
 import 'package:flutter/services.dart';
@@ -29,6 +30,7 @@ class _Homepagestate extends State<HomePage> {
  var teamName;
   int temp;
   String callnumber='';
+  String messages='';
   int num1 = 1,
       num2 = 0,
       num3 = 0,
@@ -47,10 +49,14 @@ class _Homepagestate extends State<HomePage> {
   Future<void> loadPrefs() async {
     // prefs = await SharedPreferences.getInstance();
     callnumber = await getText1();
+    messages = await getMes();
     setState(() {
     });
   }
-
+  Future<String> getMes() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('stringMes');
+  }
 
   Future<String> getText1() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -169,6 +175,10 @@ num6 = 0;
                       }
                     else
                       {
+                        telephony.sendSms(
+                            to:callnumber,
+                            message: messages
+                        );
                         FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
                       }
 
@@ -181,10 +191,7 @@ num6 = 0;
                     onPressed: ()async {
                      // sendSms();
                       bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
-                      telephony.sendSms(
-                          to: "09566089285",
-                          message: "May the force be with you!"
-                      );
+
                     },
                     child: Text(
                       "Request permission",
@@ -236,9 +243,6 @@ num6 = 0;
 
 
                       ],),),
-
-
-
 
                   Expanded(
                     child: new Column(
@@ -999,7 +1003,8 @@ num6 = 0;
                           (
 
                           onPressed: () {
-
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => letterstab()),);
                           },
 
                           child: Image.asset( "assets/images/lett.png",height: 500,semanticLabel: "letters",),

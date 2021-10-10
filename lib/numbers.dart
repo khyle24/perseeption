@@ -20,8 +20,8 @@ class numbertab extends StatefulWidget {
 
 class _InfoScreenState extends State<numbertab> {
   int pageChanged = 1;
+  int temp;
   var numi;
-  int temp=0;
   int num1 = 1,
       num2 = 0,
       num3 = 0,
@@ -54,9 +54,13 @@ body: PageView(
         pageChanged = index;
         flutterTts.stop();
       //  loadPrefs();
+
+        print(index);
+        print("asd");
       });
 
       if (index == 0) {
+
         num1 = 1;
         num2 = 0;
         num3 = 0;
@@ -65,11 +69,13 @@ body: PageView(
         num6 = 0;
         temp=0;
         numi = number(temp);
-        speak("This is the Demo");
+
+
+        speak("You need to answer is number"+numi);
         Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
           //code to run on every 5 seconds
-          //   letter = let(temp);
-          //   speak("You need to answer is letter"+letter);
+
+            speak("You need to answer is number"+numi);
         });
 
 
@@ -77,7 +83,7 @@ body: PageView(
 
     },
 
-    controller: controller,
+   controller: controller,
       children: [
 SafeArea(
 
@@ -100,8 +106,6 @@ child: Padding(
 
 
             Expanded(
-
-
               // child: new Center(
               child: GridView.count(
                 physics: new NeverScrollableScrollPhysics(),
