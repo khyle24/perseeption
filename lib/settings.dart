@@ -3,17 +3,15 @@ import 'package:perseeption/constants.dart';
 import 'package:perseeption/headers.dart';
 import 'package:perseeption/components/RoundedInputField.dart';
 import 'package:perseeption/components/rounded_button.dart';
-import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:telephony/telephony.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
 class settingsn extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
 }
-
-
-
-
 
 class _InfoScreenState extends State<settingsn> {
   final controller = ScrollController();
@@ -28,6 +26,52 @@ class _InfoScreenState extends State<settingsn> {
   String _chosenValue;
   final Telephony telephony = Telephony.instance;
 
+
+
+  String currentAddress = 'My Address';
+  Position currentposition;
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      Fluttertoast.showToast(msg: 'Please enable Your Location Service');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        Fluttertoast.showToast(msg: 'Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      Fluttertoast.showToast(
+          msg:
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+
+    try {
+      List<Placemark> placemarks =
+      await placemarkFromCoordinates(position.latitude, position.longitude);
+
+      Placemark place = placemarks[0];
+
+      setState(() {
+        currentposition = position;
+        currentAddress =
+        "${place.locality}, ${place.postalCode}, ${place.country}";
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
 
   SharedPreferences prefs;
@@ -78,6 +122,7 @@ class _InfoScreenState extends State<settingsn> {
   @override
   void initState() {
     loadPrefs();
+    //_getCurrentLocation();
    // ourText = await getText();
     // TODO: implement initState
     super.initState();
@@ -101,7 +146,6 @@ class _InfoScreenState extends State<settingsn> {
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -176,12 +220,27 @@ class _InfoScreenState extends State<settingsn> {
                     },
                   ),
 
-
+              Text(currentAddress),
+              currentposition != null
+                  ? Text('Latitude = ' + currentposition.latitude.toString())
+                  : Container(),
+              currentposition != null
+                  ? Text('Longitude = ' + currentposition.longitude.toString())
+                  : Container(),
+              TextButton(
+                  onPressed: () {
+                    _determinePosition();
+                  },
+                  child: Text('Locate me')),
 
                   RoundedButton(
                     text: "SAVE",
                     press: () async {
-
+                      currentposition != null
+                          ? print('Latitude = ' + currentposition.latitude.toString()):
+                      currentposition != null
+                          ? print('Longitude = ' + currentposition.longitude.toString()):
+                      _determinePosition();
                       if(num1==null && !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num1)&&num2==null && !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num2)&&_chosenValue==null){
                         setState(() {
                         print("sad");
