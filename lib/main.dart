@@ -187,15 +187,7 @@ num6 = 0;
                   child: Image.asset('assets/images/telephone.png',width: 350,height: 350,fit: BoxFit.fill,semanticLabel: "call"),
                 ),
 
-                FlatButton (
-                    onPressed: ()async {
-                     // sendSms();
-                      bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
 
-                    },
-                    child: Text(
-                      "Request permission",
-                    )),
               ],
             ),
           ),

@@ -11,6 +11,7 @@ import 'package:geocoding/geocoding.dart';
 class settingsn extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
+
 }
 
 class _InfoScreenState extends State<settingsn> {
@@ -18,13 +19,13 @@ class _InfoScreenState extends State<settingsn> {
   String num1;
   String num2;
   String temp;
-  String ourText=" ";
-  String ourText2 =" ";
+  String ourText="";
+  String ourText2="";
   String message="";
   double offset = 0;
   String phone1;
   String _chosenValue;
-  final Telephony telephony = Telephony.instance;
+
 
 
 
@@ -74,16 +75,19 @@ class _InfoScreenState extends State<settingsn> {
   }
 
 
+  final Telephony telephony = Telephony.instance;
   SharedPreferences prefs;
 
-  Future<void> loadPrefs() async {
-   // prefs = await SharedPreferences.getInstance();
-   ourText = await getText1();
+   void loadPrefs() async {
+    ourText = await getText1();
    ourText2 = await getText2();
+   // prefs = await SharedPreferences.getInstance();
+
    message= await getMes();
    bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
-   setState(() {
-   });
+    setState(()
+    {
+    });
   }
 
   Future<bool> saveMes(String m1) async{
@@ -122,6 +126,7 @@ class _InfoScreenState extends State<settingsn> {
   @override
   void initState() {
     loadPrefs();
+   //_determinePosition();
     //_getCurrentLocation();
    // ourText = await getText();
     // TODO: implement initState
@@ -220,32 +225,26 @@ class _InfoScreenState extends State<settingsn> {
                     },
                   ),
 
-              Text(currentAddress),
-              currentposition != null
-                  ? Text('Latitude = ' + currentposition.latitude.toString())
-                  : Container(),
-              currentposition != null
-                  ? Text('Longitude = ' + currentposition.longitude.toString())
-                  : Container(),
-              TextButton(
-                  onPressed: () {
-                    _determinePosition();
-                  },
-                  child: Text('Locate me')),
 
                   RoundedButton(
                     text: "SAVE",
                     press: () async {
-                      currentposition != null
-                          ? print('Latitude = ' + currentposition.latitude.toString()):
-                      currentposition != null
-                          ? print('Longitude = ' + currentposition.longitude.toString()):
-                      _determinePosition();
-                      if(num1==null && !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num1)&&num2==null && !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num2)&&_chosenValue==null){
+                      if(num1==null|| !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num1)&&num2==null || !RegExp(r'^(09|\+639)\d{9}$').hasMatch(num2)||_chosenValue==null){
+                        Fluttertoast.showToast(msg: 'Invalid Number');
                         setState(() {
-                        print("sad");
+
                         });
-                      }else {
+
+                      }
+
+                     else if(num1==num2)
+                       {
+                         Fluttertoast.showToast(msg: 'Input Different Number');
+                         setState(() {
+                         });
+                       }
+                      else {
+                        Fluttertoast.showToast(msg: 'Data Saved');
                           print(await saveText1(num1));
                           ourText = await getText1();
 
@@ -262,7 +261,6 @@ class _InfoScreenState extends State<settingsn> {
 
                   ),
                   SizedBox(height: size.height * 0.01),
-
 
 
                      Text(
