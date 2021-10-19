@@ -14,6 +14,9 @@ import 'dart:async';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:perseeption/sms_auto_sender.dart';
 import 'package:telephony/telephony.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 void main() => runApp(MaterialApp(home: HomePage(),));
 
 class HomePage extends StatefulWidget {
@@ -30,6 +33,7 @@ class _Homepagestate extends State<HomePage> {
  var teamName;
   int temp;
   String callnumber='';
+  String callnumber2='';
   String messages='';
   int num1 = 1,
       num2 = 0,
@@ -45,13 +49,71 @@ class _Homepagestate extends State<HomePage> {
 
 
 
+  String currentAddress = 'My Address';
+  Position currentposition;
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      Fluttertoast.showToast(msg: 'Please enable Your Location Service');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        Fluttertoast.showToast(msg: 'Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      Fluttertoast.showToast(
+          msg:
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+
+    try {
+      List<Placemark> placemarks =
+      await placemarkFromCoordinates(position.latitude, position.longitude);
+
+      Placemark place = placemarks[0];
+
+      setState(() {
+        currentposition = position;
+        currentAddress =
+        "${place.locality}, ${place.postalCode}, ${place.country}";
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+
+
+
+
+
+
+
   FlutterTts flutterTts = FlutterTts();
   Future<void> loadPrefs() async {
     // prefs = await SharedPreferences.getInstance();
     callnumber = await getText1();
+    callnumber2 = await getText2();
     messages = await getMes();
     setState(() {
     });
+  }
+
+
+  Future<String> getText2() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('stringValue2');
   }
   Future<String> getMes() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -156,7 +218,7 @@ num6 = 0;
 
                   onPressed: () {
 
-                    if(callnumber==null)
+                    if(callnumber==null||callnumber2==null)
                       {
                          showDialog<String>(
                           context: context,
@@ -175,11 +237,20 @@ num6 = 0;
                       }
                     else
                       {
+
                         telephony.sendSms(
                             to:callnumber,
-                            message: messages
+                            message: messages+currentAddress
                         );
                         FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
+                        Text(currentAddress);
+                    currentposition != null
+                    ? Text('Latitude = ' + currentposition.latitude.toString())
+                        : Container();
+                    currentposition != null
+                    ? Text('Longitude = ' + currentposition.longitude.toString())
+                    : Container();
+                        _determinePosition();
                       }
 
 
@@ -187,6 +258,11 @@ num6 = 0;
                   child: Image.asset('assets/images/telephone.png',width: 350,height: 350,fit: BoxFit.fill,semanticLabel: "call"),
                 ),
 
+                TextButton(
+                    onPressed: () {
+                      _determinePosition();
+                    },
+                    child: Text('Locate me')),
 
               ],
             ),
