@@ -38,7 +38,7 @@ String let(int num)
 
 String number(int num)
 {
-  var arr = new List(10);
+  var arr = new List(11);
   arr[0] = '1';
   arr[1] = '2';
   arr[2] = '3';
@@ -49,6 +49,7 @@ String number(int num)
   arr[7] = '8';
   arr[8] = '9';
   arr[9] = '0';
+  arr[10]='Done';
   return arr[num];
 }
 
@@ -57,7 +58,7 @@ int b1(String letter)
 
   var arr = new List(7);
 arr[0]=0;
-if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D"||letter=="3"||letter=="4")
+if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D"||letter=="3"||letter=="4"||letter=="5"||letter=="6"||letter=="7"||letter=="8")
   {
 
     arr[0]=1;
@@ -70,7 +71,7 @@ int b2(String letter)
 
   var arr = new List(7);
   arr[1]=0;
-  if(letter=="B"||letter=="2")
+  if(letter=="B"||letter=="2"||letter=="6"||letter=="7"||letter=="8"||letter=="9"||letter=="0")
   {
 
     arr[1]=1;
@@ -101,7 +102,7 @@ int b4(String letter)
   var arr = new List(7);
 
   arr[3]=0;
-  if(letter=="C"||letter=="D"||letter=="3"||letter=="4")
+  if(letter=="C"||letter=="D"||letter=="3"||letter=="4"||letter=="6"||letter=="7"||letter=="9"||letter=="0")
   {
 
     arr[3]=1;
@@ -118,7 +119,7 @@ int b5(String letter)
   var arr = new List(7);
 
   arr[4]=0;
-  if(letter=="D"||letter=="4")
+  if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0")
   {
 
     arr[4]=1;

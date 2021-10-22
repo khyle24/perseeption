@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:perseeption/rand.dart';
+import 'package:perseeption/provider/timer_provider.dart';
 import 'package:perseeption/announcement.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
 import 'rand.dart';
+import 'package:provider/provider.dart';
 import 'dart:math';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart' show getApplicationDocumentsDirectory;
@@ -29,11 +31,50 @@ class _InfoScreenState extends State<numbertab> {
       num5 = 0,
       num6 = 0;
 
+  String formatTime(int milliseconds) {
+    var secs = milliseconds ~/ 1000;
+    var hours = (secs ~/ 3600).toString().padLeft(2, '0');
+    var minutes = ((secs % 3600) ~/ 60).toString().padLeft(2, '0');
+    var seconds = (secs % 60).toString().padLeft(2, '0');
+    return "$hours:$minutes:$seconds";
+  }
+
+  FlutterTts flutterTts = FlutterTts();
+  Stopwatch _stopwatch;
+  void handleStartStop() {
+    if (_stopwatch.isRunning) {
+      _stopwatch.stop();
+
+    } else {
+      _stopwatch.start();
+    }
+    setState(() {});    // re-render the page
+  }
+  @override
+  void initState() {
+    _stopwatch = Stopwatch();
+handleStartStop();
+
+    //_determinePosition();
+    //_getCurrentLocation();
+    // ourText = await getText();
+    // TODO: implement initState
+    super.initState();
+
+
+  }
+  @override
+  void dispose() {
+   // flutterTts.stop();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+
     final PageController controller = PageController(initialPage: 1);
-    FlutterTts flutterTts = FlutterTts();
+
     Future speak(String tlk) async {
       await flutterTts.setLanguage("en-US");
       await flutterTts.setPitch(0.8);
@@ -75,7 +116,7 @@ body: PageView(
         Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
           //code to run on every 5 seconds
 
-            speak("You need to answer is number"+numi);
+          // speak("You need to answer is number"+numi);
         });
 
 
@@ -93,8 +134,8 @@ child: Padding(
 
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-
             Center(
+
               child: Text(
                 '$numi',
                 style: TextStyle(
@@ -191,6 +232,31 @@ child: Padding(
 
                               numi = number(temp);
                               speak(numi);
+                              if(numi=="Done")
+                              {
+                                speak("Your time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                int count = 0;
+                                showDialog<String>(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (BuildContext context) => AlertDialog(
+                                    title: const Text('Alert'),
+                                    content:
+                                    Text("Your Time is"+formatTime(_stopwatch.elapsedMilliseconds), style: TextStyle(fontSize: 15.0)),
+                                    actions: <Widget>[
+
+                                      TextButton(
+                                        onPressed: () =>
+
+                                Navigator.of(context).popUntil((_) => count++ >= 2),
+                                        child: const Text('OK'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+
+
                               num1 = b1(numi);
                               num2 = b2(numi);
                               num3 = b3(numi);
@@ -274,11 +340,13 @@ child: Padding(
                           sum = sum - 1;
                           print(num5);
                           print(sum);
+                          speak("correct");
                           if (sum == 0) {
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
                               numi = number(temp);
+                              speak(numi);
                               num1 = b1(numi);
                               num2 = b2(numi);
                               num3 = b3(numi);
@@ -315,11 +383,13 @@ child: Padding(
                           sum = sum - 1;
                           print(num1);
                           print(sum);
+                          speak("correct");
                           if (sum == 0) {
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
                               numi = number(temp);
+                              speak(numi);
                               num1 = b1(numi);
                               num2 = b2(numi);
                               num3 = b3(numi);
@@ -356,13 +426,14 @@ child: Padding(
                         else {
                           num6 = num6 - 1;
                           sum = sum - 1;
-
+                          speak("correct");
                           if (sum == 0) {
                             setState(() {
                               HapticFeedback.lightImpact();
                               temp = temp + 1;
                               speak(numi);
                               numi = number(temp);
+                              speak(numi);
                               num1 = b1(numi);
                               num2 = b2(numi);
                               num3 = b3(numi);

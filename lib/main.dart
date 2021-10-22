@@ -49,7 +49,7 @@ class _Homepagestate extends State<HomePage> {
 
 
 
-  String currentAddress = 'My Address';
+  String currentAddress='';
   Position currentposition;
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -220,8 +220,10 @@ num6 = 0;
 
                     if(callnumber==null||callnumber2==null)
                       {
+
                          showDialog<String>(
-                          context: context,
+                           barrierDismissible: false,
+                           context: context,
                           builder: (BuildContext context) => AlertDialog(
                             title: const Text('Alert'),
                             content: const Text('No Contact Number inserted. Go to the contact form.'),
@@ -238,19 +240,15 @@ num6 = 0;
                     else
                       {
 
+                        FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
+
+
                         telephony.sendSms(
                             to:callnumber,
-                            message: messages+currentAddress
+                            message: messages
                         );
-                        FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
-                        Text(currentAddress);
-                    currentposition != null
-                    ? Text('Latitude = ' + currentposition.latitude.toString())
-                        : Container();
-                    currentposition != null
-                    ? Text('Longitude = ' + currentposition.longitude.toString())
-                    : Container();
-                        _determinePosition();
+
+
                       }
 
 
@@ -1059,6 +1057,7 @@ num6 = 0;
                           (
 
                           onPressed: () {
+                            flutterTts.stop();
                             Navigator.push(context,
                               MaterialPageRoute(builder: (context) => numbertab()),);
                           },

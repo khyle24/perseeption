@@ -33,17 +33,21 @@ class _InfoScreenState extends State<settingsn> {
   final Telephony telephony = Telephony.instance;
   SharedPreferences prefs;
 
-   void loadPrefs() async {
-    ourText = await getText1();
-   ourText2 = await getText2();
-   // prefs = await SharedPreferences.getInstance();
 
-   message= await getMes();
-   bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
-    setState(()
-    {
+
+  Future<void> loadPrefs() async {
+    // prefs = await SharedPreferences.getInstance();
+    ourText = await getText1();
+    ourText2 = await getText2();
+    // prefs = await SharedPreferences.getInstance();
+    message= await getMes();
+    bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
+    setState(() {
     });
   }
+
+
+
 
   Future<bool> saveMes(String m1) async{
 
