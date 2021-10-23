@@ -4,6 +4,7 @@ import 'package:perseeption/rand.dart';
 import 'package:perseeption/provider/timer_provider.dart';
 import 'package:perseeption/announcement.dart';
 import 'package:perseeption/settings.dart';
+import 'package:perseeption/components/AdvanceCustomAlert.dart';
 import 'package:perseeption/timer.dart';
 import 'rand.dart';
 import 'package:provider/provider.dart';
@@ -234,26 +235,40 @@ child: Padding(
                               speak(numi);
                               if(numi=="Done")
                               {
-                                speak("Your time is:"+formatTime(_stopwatch.elapsedMilliseconds));
-                                int count = 0;
+int count=0;
+speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                showDialog(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return WillPopScope(
+                                          onWillPop: () async => false,
+                                      child:
+                                     AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                    });
+
+                                /*
                                 showDialog<String>(
                                   barrierDismissible: false,
                                   context: context,
                                   builder: (BuildContext context) => AlertDialog(
-                                    title: const Text('Alert'),
+                                    title: const Text('Results'),
                                     content:
-                                    Text("Your Time is"+formatTime(_stopwatch.elapsedMilliseconds), style: TextStyle(fontSize: 15.0)),
+                                    Text("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds), style: TextStyle(fontSize: 20.0)),
                                     actions: <Widget>[
 
                                       TextButton(
                                         onPressed: () =>
 
-                                Navigator.of(context).popUntil((_) => count++ >= 2),
+                                            Navigator.of(context).popUntil((_) => count++ >= 2),
                                         child: const Text('OK'),
                                       ),
                                     ],
                                   ),
                                 );
+
+*/
+
                               }
 
 
