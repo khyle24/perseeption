@@ -152,6 +152,8 @@ class _Homepagestate extends State<HomePage> {
     callnumber = await getText1();
     callnumber2 = await getText2();
     messages = await getMes();
+    Position position = await _getGeoLocationPosition();
+    GetAddressFromLatLong(position);
     setState(() {
     });
   }
@@ -211,7 +213,7 @@ print(height);
           });
 if(index==0)
   {
-    _getGeoLocationPosition();
+
   }
           if (index == 2) {
 temp=0;
@@ -265,7 +267,8 @@ num6 = 0;
                   (
 
 
-                  onPressed: () {
+                  onPressed: ()async {
+
                   //  _determinePosition();
                     if(callnumber==null||callnumber2==null)
                       {
@@ -289,13 +292,16 @@ num6 = 0;
                     else
                       {
 
-                        FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
-print(messages);
 
                         telephony.sendSms(
                             to:callnumber,
-                            message: messages
+                            message: messages+" "+'${Address}'
                         );
+
+                        FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
+print(messages);
+
+
 
 
                       }
@@ -304,6 +310,7 @@ print(messages);
                   },
                   child: Image.asset('assets/images/telephone.png',width: 350,height: 350,fit: BoxFit.fill,semanticLabel: "call"),
                 ),
+                /*
                 Text('Coordinates Points',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
                 SizedBox(height: 10,),
                 Text(location,style: TextStyle(color: Colors.black,fontSize: 16),),
@@ -316,7 +323,7 @@ print(messages);
                   location ='Lat: ${position.latitude} , Long: ${position.longitude}';
                   GetAddressFromLatLong(position);
                 }, child: Text('Get Location'))
-
+*/
               ],
             ),
           ),
