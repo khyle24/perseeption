@@ -11,7 +11,7 @@ String generateRandomString(int len) {
 
 String let(int num)
 {
-  var arr = new List(20);
+  var arr = new List(27);
   arr[0] = 'A';
   arr[1] = 'B';
   arr[2] = 'C';
@@ -32,6 +32,14 @@ String let(int num)
   arr[17] = 'R';
   arr[18] = 'S';
   arr[19] = 'T';
+  arr[20] = 'U';
+  arr[21] = 'V';
+  arr[22] = 'W';
+  arr[23] = 'Z';
+  arr[24] = 'Y';
+  arr[25] = 'Z';
+  arr[26] = 'Done';
+
 
   return arr[num];
 }
@@ -52,6 +60,30 @@ String number(int num)
   arr[10]='Done';
   return arr[num];
 }
+
+
+
+String words(int num)
+{
+  List yourList = ["first item", "second item", "third item"];
+  int randomIndex = Random().nextInt(yourList.length);
+  var arr = new List(11);
+
+  arr[0] = '1';
+  arr[1] = '2';
+  arr[2] = '3';
+  arr[3] = '4';
+  arr[4] = '5';
+  arr[5] = '6';
+  arr[6] = '7';
+  arr[7] = '8';
+  arr[8] = '9';
+  arr[9] = '0';
+  arr[10]='Done';
+  return arr[num];
+}
+
+
 
 int b1(String letter)
 {
