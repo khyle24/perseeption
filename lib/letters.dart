@@ -29,6 +29,44 @@ class _InfoScreenState extends State<letterstab> {
       num5 = 0,
       num6 = 0;
 
+  String formatTime(int milliseconds) {
+    var secs = milliseconds ~/ 1000;
+    var hours = (secs ~/ 3600).toString().padLeft(2, '0');
+    var minutes = ((secs % 3600) ~/ 60).toString().padLeft(2, '0');
+    var seconds = (secs % 60).toString().padLeft(2, '0');
+    return "$hours:$minutes:$seconds";
+  }
+
+  FlutterTts flutterTts = FlutterTts();
+  Stopwatch _stopwatch;
+  void handleStartStop() {
+    if (_stopwatch.isRunning) {
+      _stopwatch.stop();
+
+    } else {
+      _stopwatch.start();
+    }
+    setState(() {});    // re-render the page
+  }
+  @override
+  void initState() {
+    _stopwatch = Stopwatch();
+    handleStartStop();
+
+    //_determinePosition();
+    //_getCurrentLocation();
+    // ourText = await getText();
+    // TODO: implement initState
+    super.initState();
+
+
+  }
+  @override
+  void dispose() {
+    // flutterTts.stop();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {

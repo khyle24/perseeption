@@ -152,8 +152,6 @@ class _Homepagestate extends State<HomePage> {
     callnumber = await getText1();
     callnumber2 = await getText2();
     messages = await getMes();
-    Position position = await _getGeoLocationPosition();
-    GetAddressFromLatLong(position);
     setState(() {
     });
   }
@@ -175,6 +173,10 @@ class _Homepagestate extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     double height = MediaQuery.of(context).size.height;
 print(height);
     double yourWidth;
@@ -208,7 +210,7 @@ print(height);
           setState(() {
             pageChanged = index;
             flutterTts.stop();
-            loadPrefs();
+
             print(callnumber);
           });
 if(index==0)
@@ -1103,13 +1105,13 @@ print(messages);
                   Container(
 
                     width: MediaQuery.of(context).size.width*.95,
-                    height: MediaQuery.of(context).size.height*.90,
+                    height: MediaQuery.of(context).size.height*.92,
                     // child: new Center(
                     child: GridView.count(
                       physics: new NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: 1,
-                      childAspectRatio: MediaQuery.of(context).size.height /450,
+                      childAspectRatio: MediaQuery.of(context).size.height /320,
                       crossAxisSpacing: .90,
                       mainAxisSpacing: 20,
 
@@ -1136,7 +1138,7 @@ print(messages);
                               MaterialPageRoute(builder: (context) => letterstab()),);
                           },
 
-                          child: Image.asset( "assets/images/lett.png",height: 500,semanticLabel: "letters",),
+                          child: Image.asset( "assets/images/letters.png",height: 500,semanticLabel: "letters",),
                         ),
 
                         FlatButton
@@ -1148,6 +1150,17 @@ print(messages);
 
                           child: Image.asset( "assets/images/punct.png",height: 500,semanticLabel: "Punctuations",),
                         ),
+
+                        FlatButton
+                          (
+                          onPressed: () {
+
+                          },
+
+
+                          child: Image.asset( "assets/images/words.png",height: 500,semanticLabel: "words",),
+                        ),
+
 
 
                       ],

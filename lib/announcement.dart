@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:perseeption/constants.dart';
 import 'package:perseeption/headerc.dart';
+import 'dart:io';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 class announce extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
 }
 
 class _InfoScreenState extends State<announce> {
+  List data = [];
   final controller = ScrollController();
   double offset = 0;
 
@@ -30,6 +34,18 @@ class _InfoScreenState extends State<announce> {
     });
   }
 
+
+
+  void fetchData() async {
+    final response = await http.get('https://db.skidax.com/sql.php?server=1&db=perseeption_db-36376157&table=admin_announcement&pos=0');
+
+    if (response.statusCode == 200) {
+      setState(() {
+        data = json.decode(response.body);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +66,12 @@ class _InfoScreenState extends State<announce> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
 
-
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: data.length,
+                      itemBuilder: (BuildContext context, int index) => ListTile(
+                        title: Text(data[index]['title']),
+                      )),
 
                   Text("Announcements", style: kTitleTextstyle),
                   SizedBox(height: 20),

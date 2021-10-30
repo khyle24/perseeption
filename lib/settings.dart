@@ -9,6 +9,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter/services.dart';
 class settingsn extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
@@ -147,6 +148,9 @@ class _InfoScreenState extends State<settingsn> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
