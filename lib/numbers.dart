@@ -140,20 +140,22 @@ child: Padding(
               child: Text(
                 '$numi',
                 style: TextStyle(
-                  fontSize: 40,
+                  fontSize: 35,
                   color: Color(0xFF00315c),
                   fontFamily: 'gotham',)
                 ,
               ),),
 
 
-            Expanded(
+            Container(
               // child: new Center(
+              width: MediaQuery.of(context).size.width*.95,
+              height: MediaQuery.of(context).size.height*.90,
               child: GridView.count(
                 physics: new NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 crossAxisCount: 2,
-                childAspectRatio: .70,
+                childAspectRatio: MediaQuery.of(context).size.height /950,
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 20,
 
@@ -169,7 +171,7 @@ child: Padding(
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+numi);
+                          speak("wrong You need to answer is number "+numi);
                         }
                         else if (num1 == 0) {
                           speak("clicked this already");
@@ -215,7 +217,7 @@ child: Padding(
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+numi);
+                          speak("wrong You need to answer is number "+numi);
                         }
                         else if (num4 == 0) {
                           speak("clicked this already");
@@ -298,7 +300,7 @@ speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+numi);
+                          speak("wrong You need to answer is number "+numi);
                         }
                         else if (num2 == 0) {
                           speak("clicked this already");
@@ -345,7 +347,7 @@ speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+numi);
+                          speak("wrong You need to answer is number "+numi);
                         }
                         else if (num5 == 0) {
                           speak("clicked this already");
@@ -388,7 +390,7 @@ speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+numi);
+                          speak("wrong You need to answer is number "+numi);
                         }
                         else if (num3 == 0) {
                           speak("clicked this already");
@@ -396,7 +398,7 @@ speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
                         else {
                           num3 = num3 - 1;
                           sum = sum - 1;
-                          print(num1);
+                          print(num3);
                           print(sum);
                           speak("correct");
                           if (sum == 0) {
@@ -432,7 +434,7 @@ speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
                       print(sum);
                       if (sum > 0) {
                         if (orig == 0) {
-                          speak("wrong You need to answer is letter "+numi);
+                          speak("wrong You need to answer is number "+numi);
 
                         }
                         else if (num6 == 0) {

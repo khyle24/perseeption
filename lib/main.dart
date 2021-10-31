@@ -6,6 +6,7 @@ import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
 import 'package:perseeption/numbers.dart';
 import 'package:perseeption/letters.dart';
+import 'package:perseeption/punctuation.dart';
 import 'package:perseeption/screensize.dart';
 import 'rand.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -1144,6 +1145,8 @@ print(messages);
                         FlatButton
                           (
                           onPressed: () {
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => punctua()),);
 
                           },
 

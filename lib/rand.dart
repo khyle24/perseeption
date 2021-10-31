@@ -60,7 +60,26 @@ String number(int num)
   arr[10]='Done';
   return arr[num];
 }
-
+String punc(int num)
+{
+  var arr = new List(16);
+  arr[0] = 'Apostrophe';
+  arr[1] = 'Asterisk *';
+  arr[2] = 'Colon :';
+  arr[3] = 'Comma ,';
+  arr[4] = 'Dash _';
+  arr[5] = 'Exclamation point !';
+  arr[6] = 'Hyphen -';
+  arr[7] = 'Number sign #';
+  arr[8] = 'Opening parenthesis (';
+  arr[9] = 'Closing parenthesis )';
+  arr[10]='Period .';
+  arr[11] = 'Question mark ?';
+  arr[12] = 'Double quotation mark "';
+  arr[13]='Semicolon ;';
+  arr[14]='Done';
+  return arr[num];
+}
 
 
 String words(int num)
@@ -117,10 +136,16 @@ int b2(String letter)
 int b3(String letter)
 {
 
-  int temp;
   var arr = new List(7);
 
     arr[2]=0;
+
+  if(letter=="Apostrophe"||letter=="Asterisk *")
+  {
+
+    arr[2]=1;
+
+  }
 
 
   return arr[2];
