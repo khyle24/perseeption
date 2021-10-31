@@ -176,7 +176,7 @@ int b5(String letter)
   var arr = new List(7);
 
   arr[4]=0;
-  if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0")
+  if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0"||letter=="Asterisk *")
   {
 
     arr[4]=1;

@@ -103,9 +103,9 @@ class _InfoScreenState extends State<punctua> {
 
             if (index == 0) {
 
-              num1 = 1;
+              num1 = 0;
               num2 = 0;
-              num3 = 0;
+              num3 = 1;
               num4 = 0;
               num5 = 0;
               num6 = 0;
