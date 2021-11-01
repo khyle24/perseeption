@@ -109,7 +109,8 @@ int b1(String letter)
 
   var arr = new List(7);
 arr[0]=0;
-if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D"||letter=="3"||letter=="4"||letter=="5"||letter=="6"||letter=="7"||letter=="8")
+if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D"||letter=="3"||letter=="4"||letter=="5"
+||letter=="E"||letter=="6"||letter=="7"||letter=="8"||letter=="F"||letter=="G")
   {
 
     arr[0]=1;
@@ -122,7 +123,7 @@ int b2(String letter)
 
   var arr = new List(7);
   arr[1]=0;
-  if(letter=="B"||letter=="2"||letter=="6"||letter=="7"||letter=="8"||letter=="9"||letter=="0")
+  if(letter=="B"||letter=="2"||letter=="6"||letter=="7"||letter=="8"||letter=="9"||letter=="0"||letter=="F"||letter=="G")
   {
 
     arr[1]=1;
@@ -159,7 +160,7 @@ int b4(String letter)
   var arr = new List(7);
 
   arr[3]=0;
-  if(letter=="C"||letter=="D"||letter=="3"||letter=="4"||letter=="6"||letter=="7"||letter=="9"||letter=="0")
+  if(letter=="C"||letter=="D"||letter=="3"||letter=="4"||letter=="6"||letter=="7"||letter=="9"||letter=="0"||letter=="F"||letter=="G")
   {
 
     arr[3]=1;
@@ -176,7 +177,7 @@ int b5(String letter)
   var arr = new List(7);
 
   arr[4]=0;
-  if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0"||letter=="Asterisk *")
+  if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0"||letter=="E"||letter=="Asterisk *"||letter=="G")
   {
 
     arr[4]=1;

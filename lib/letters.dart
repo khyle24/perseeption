@@ -109,11 +109,7 @@ class _InfoScreenState extends State<letterstab> {
 
 
               speak("You need to answer is letter"+numi);
-              Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
-                //code to run on every 5 seconds
 
-                speak("You need to answer is letter"+numi);
-              });
 
 
             }
@@ -270,7 +266,7 @@ class _InfoScreenState extends State<letterstab> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
 
-                                      numi = number(temp);
+                                      numi = let(temp);
                                       speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
@@ -315,7 +311,8 @@ class _InfoScreenState extends State<letterstab> {
                                     setState(() {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
-                                      numi = number(temp);
+                                      numi = let(temp);
+                                      speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
@@ -356,7 +353,8 @@ class _InfoScreenState extends State<letterstab> {
                                     setState(() {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
-                                      numi = number(temp);
+                                      numi = let(temp);
+                                      speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
@@ -399,7 +397,7 @@ class _InfoScreenState extends State<letterstab> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       speak(numi);
-                                      numi = number(temp);
+                                      numi = let(temp);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
