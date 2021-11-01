@@ -132,20 +132,21 @@ class _InfoScreenState extends State<letterstab> {
                       child: Text(
                         '$numi',
                         style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 35,
                           color: Color(0xFF00315c),
                           fontFamily: 'gotham',)
                         ,
                       ),),
 
-
-                    Expanded(
+                    Container(
                       // child: new Center(
+                      width: MediaQuery.of(context).size.width*.95,
+                      height: MediaQuery.of(context).size.height*.90,
                       child: GridView.count(
                         physics: new NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 2,
-                        childAspectRatio: .70,
+                        childAspectRatio: MediaQuery.of(context).size.height /950,
                         crossAxisSpacing: 40,
                         mainAxisSpacing: 20,
 

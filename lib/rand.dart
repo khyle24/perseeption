@@ -60,27 +60,6 @@ String number(int num)
   arr[10]='Done';
   return arr[num];
 }
-String punc(int num)
-{
-  var arr = new List(16);
-  arr[0] = 'Apostrophe';
-  arr[1] = 'Asterisk *';
-  arr[2] = 'Colon :';
-  arr[3] = 'Comma ,';
-  arr[4] = 'Dash _';
-  arr[5] = 'Exclamation point !';
-  arr[6] = 'Hyphen -';
-  arr[7] = 'Number sign #';
-  arr[8] = 'Opening parenthesis (';
-  arr[9] = 'Closing parenthesis )';
-  arr[10]='Period .';
-  arr[11] = 'Question mark ?';
-  arr[12] = 'Double quotation mark "';
-  arr[13]='Semicolon ;';
-  arr[14]='Done';
-  return arr[num];
-}
-
 
 String words(int num)
 {
@@ -102,6 +81,25 @@ String words(int num)
   return arr[num];
 }
 
+String punc(int num)
+{
+  var arr = new List(16);
+  arr[0] = 'Apostrophe';
+  arr[1] = 'Asterisk *';
+  arr[2] = 'Colon :';
+  arr[3] = 'Comma ,';
+  arr[4] = 'Exclamation point !';
+  arr[5] = 'Hyphen -';
+  arr[6] = 'Number sign #';
+  arr[7] = 'Opening parenthesis (';
+  arr[8] = 'Closing parenthesis )';
+  arr[9]=   'Period .';
+  arr[10] = 'Question mark ?';
+  arr[11] = 'Double quotation mark "';
+  arr[12]='Semicolon ;';
+  arr[13]='Done';
+  return arr[num];
+}
 
 
 int b1(String letter)
@@ -127,7 +125,8 @@ int b2(String letter)
   arr[1]=0;
   if(letter=="B"||letter=="2"||letter=="6"||letter=="7"||letter=="8"||letter=="9"||letter=="0"||letter=="F"||letter=="G"
       ||letter=="H" ||letter=="I" ||letter=="J" ||letter=="L" ||letter=="P" ||letter=="Q"||letter=="R"||letter=="S"||letter=="T"
-      ||letter=="V"||letter=="W")
+      ||letter=="V"||letter=="W"||letter=="Colon :"||letter=="Comma ,"||letter=="Exclamation point !"||letter=="Opening parenthesis ("
+  )
   {
 
     arr[1]=1;
@@ -147,7 +146,8 @@ int b3(String letter)
 
   if(letter=="Apostrophe"||letter=="Asterisk *" ||letter=="K" ||letter=="L" ||letter=="M" ||letter=="N" ||letter=="O"
       ||letter=="P"||letter=="Q"||letter=="R"||letter=="S"||letter=="T"||letter=="U"||letter=="V"
-      ||letter=="X"||letter=="Y"||letter=="Z")
+      ||letter=="X"||letter=="Y"||letter=="Z"||letter=="Hyphen -"||letter=="Exclamation point !"||letter=="Number sign #"
+      ||letter=="Opening parenthesis (")
   {
 
     arr[2]=1;
@@ -168,7 +168,7 @@ int b4(String letter)
   arr[3]=0;
   if(letter=="C"||letter=="D"||letter=="3"||letter=="4"||letter=="6"||letter=="7"||letter=="9"||letter=="0"||letter=="F"||letter=="G"
       ||letter=="I" ||letter=="J" ||letter=="M" ||letter=="N" ||letter=="P"||letter=="Q"||letter=="S"||letter=="T"||letter=="W"
-      ||letter=="X"||letter=="Y")
+      ||letter=="X"||letter=="Y"||letter=="Number sign #")
   {
 
     arr[3]=1;
@@ -187,7 +187,8 @@ int b5(String letter)
   arr[4]=0;
   if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0"||letter=="E"||letter=="Asterisk *"||letter=="G"
       ||letter=="H" ||letter=="J" ||letter=="N" ||letter=="O"||letter=="Q"||letter=="R"||letter=="T"||letter=="W"||letter=="Y"
-      ||letter=="Z")
+      ||letter=="Z"||letter=="Colon :"||letter=="Exclamation point !"||letter=="Number sign #"||letter=="Opening parenthesis ("
+  )
   {
 
     arr[4]=1;
@@ -205,7 +206,8 @@ int b6(String letter)
 
   arr[5]=0;
 
-  if(letter=="U"||letter=="V"||letter=="W"||letter=="X"||letter=="Y"||letter=="Z")
+  if(letter=="U"||letter=="V"||letter=="W"||letter=="X"||letter=="Y"||letter=="Z"||letter=="Hyphen -"||letter=="Number sign #"
+      ||letter=="Opening parenthesis (")
     {
       arr[5]=1;
     }
