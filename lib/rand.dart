@@ -95,9 +95,8 @@ String punc(int num)
   arr[8] = 'Closing parenthesis )';
   arr[9]=   'Period .';
   arr[10] = 'Question mark ?';
-  arr[11] = 'Double quotation mark "';
-  arr[12]='Semicolon ;';
-  arr[13]='Done';
+  arr[11]='Semicolon ;';
+  arr[12]='Done';
   return arr[num];
 }
 
@@ -126,7 +125,7 @@ int b2(String letter)
   if(letter=="B"||letter=="2"||letter=="6"||letter=="7"||letter=="8"||letter=="9"||letter=="0"||letter=="F"||letter=="G"
       ||letter=="H" ||letter=="I" ||letter=="J" ||letter=="L" ||letter=="P" ||letter=="Q"||letter=="R"||letter=="S"||letter=="T"
       ||letter=="V"||letter=="W"||letter=="Colon :"||letter=="Comma ,"||letter=="Exclamation point !"||letter=="Opening parenthesis ("
-  )
+      ||letter=="Closing parenthesis )"||letter=="Period ." ||letter=="Question mark ?" ||letter=="Semicolon ;")
   {
 
     arr[1]=1;
@@ -147,7 +146,7 @@ int b3(String letter)
   if(letter=="Apostrophe"||letter=="Asterisk *" ||letter=="K" ||letter=="L" ||letter=="M" ||letter=="N" ||letter=="O"
       ||letter=="P"||letter=="Q"||letter=="R"||letter=="S"||letter=="T"||letter=="U"||letter=="V"
       ||letter=="X"||letter=="Y"||letter=="Z"||letter=="Hyphen -"||letter=="Exclamation point !"||letter=="Number sign #"
-      ||letter=="Opening parenthesis (")
+      ||letter=="Opening parenthesis (" ||letter=="Closing parenthesis )"||letter=="Question mark ?" ||letter=="Semicolon ;")
   {
 
     arr[2]=1;
@@ -188,7 +187,7 @@ int b5(String letter)
   if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0"||letter=="E"||letter=="Asterisk *"||letter=="G"
       ||letter=="H" ||letter=="J" ||letter=="N" ||letter=="O"||letter=="Q"||letter=="R"||letter=="T"||letter=="W"||letter=="Y"
       ||letter=="Z"||letter=="Colon :"||letter=="Exclamation point !"||letter=="Number sign #"||letter=="Opening parenthesis ("
-  )
+      ||letter=="Closing parenthesis )"||letter=="Period ." )
   {
 
     arr[4]=1;
@@ -207,7 +206,7 @@ int b6(String letter)
   arr[5]=0;
 
   if(letter=="U"||letter=="V"||letter=="W"||letter=="X"||letter=="Y"||letter=="Z"||letter=="Hyphen -"||letter=="Number sign #"
-      ||letter=="Opening parenthesis (")
+      ||letter=="Opening parenthesis (" ||letter=="Closing parenthesis )"||letter=="Period ." ||letter=="Question mark ?")
     {
       arr[5]=1;
     }
