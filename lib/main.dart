@@ -98,7 +98,7 @@ class _Homepagestate extends State<HomePage> {
 
 */
   String location ='Null, Press Button';
-  String Address = 'search';
+  String Address = 'No Internet';
   Future<Position> _getGeoLocationPosition() async {
     bool serviceEnabled;
 
@@ -143,21 +143,6 @@ class _Homepagestate extends State<HomePage> {
   }
 
 
-
-
-
-
-  FlutterTts flutterTts = FlutterTts();
-  Future<void> loadPrefs() async {
-    // prefs = await SharedPreferences.getInstance();
-    callnumber = await getText1();
-    callnumber2 = await getText2();
-    messages = await getMes();
-    setState(() {
-    });
-  }
-
-
   Future<String> getText2() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('stringValue2');
@@ -171,6 +156,32 @@ class _Homepagestate extends State<HomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('stringValue1');
   }
+
+
+
+  FlutterTts flutterTts = FlutterTts();
+  Future<void> loadPrefs() async {
+    // prefs = await SharedPreferences.getInstance();
+    callnumber = await getText1();
+    callnumber2 = await getText2();
+    messages = await getMes();
+    Position position = await _getGeoLocationPosition();
+    GetAddressFromLatLong(position);
+    setState(() {
+    });
+  }
+
+  @override
+  void initState() {
+    loadPrefs();
+    //_determinePosition();
+    //_getCurrentLocation();
+    // ourText = await getText();
+    // TODO: implement initState
+    super.initState();
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -232,7 +243,7 @@ num6 = 0;
               //  letter = let(temp);
            //   speak("You need to answer is letter"+letter);
           //   });
-            speak("This is the Demo");
+            speak("This is the Demo Instructions: Tap the button that corresponds to the combination of letter, it will inform you if you tap the wrong combination but proceeds if you got it right the first you need to answer is letter");
 
 
 
@@ -250,7 +261,7 @@ num6 = 0;
 
              time();
 
-          speak("Instructions: Tap the button that corresponds to the combination of letter, it will inform you if you tap the wrong combination but proceeds if you got it right the first you need to answer is letter"+letter);
+          speak("Categories");
 
           }
 
@@ -271,6 +282,8 @@ num6 = 0;
 
 
                   onPressed: ()async {
+
+                    print(messages);
 
                   //  _determinePosition();
                     if(callnumber==null||callnumber2==null)
@@ -295,13 +308,13 @@ num6 = 0;
                     else
                       {
 
-
+                        FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
                         telephony.sendSms(
                             to:callnumber,
                             message: messages+" "+'${Address}'
                         );
 
-                        FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
+
 print(messages);
 
 
@@ -376,6 +389,7 @@ print(messages);
                       ],),),
 
                   Expanded(
+
                     child: new Column(
 
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -758,327 +772,6 @@ print(messages);
 
 
 
-          SafeArea(
-
-
-            child: Padding(
-
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-
-                  Center(
-                    child:  Text(
-                      '$letter',
-                      style: TextStyle(
-                        fontSize: 40,
-                        color: Color(0xFF00315c),
-                        fontFamily: 'gotham',)
-                      ,
-
-
-                    ),),
-
-                  Expanded(
-
-
-                    // child: new Center(
-                    child: GridView.count(
-                      physics: new NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      crossAxisCount: 2,
-                      childAspectRatio: .70,
-                      crossAxisSpacing: 40,
-                      mainAxisSpacing: 20,
-
-                      children: <Widget>[
-
-                        FlatButton
-                          (
-
-
-
-                          onPressed: () {
-                            int orig=b1(letter);
-                            print(orig);
-                            print(letter);
-
-                            int sum = num1 + num2 + num3 + num4 + num5 + num6;
-                            print(sum);
-                            if (sum > 0) {
-                              if (orig == 0) {
-                                speak("wrong You need to answer is letter "+letter);
-                              }
-                              else if (num1 == 0) {
-                               speak("clicked this already");
-                              }
-                              else {
-                                num1 = num1 - 1;
-                                sum = sum - 1;
-                                print(num1);
-                                print(sum);
-                                speak("correct");
-                                if (sum == 0) {
-                                  setState(() {
-                                    HapticFeedback.lightImpact();
-                                    temp = temp + 1;
-                                    letter = let(temp);
-                                    num1 = b1(letter);
-                                    num2 = b2(letter);
-                                    num3 = b3(letter);
-                                    num4 = b4(letter);
-                                    num5 = b5(letter);
-                                    num6 = b6(letter);
-                                    speak(letter);
-                                  });
-                                }
-                              }
-                            }
-                          },
-
-                          child: Image.asset( "assets/images/1.png",height: 550,semanticLabel: "1",),
-                        ),
-
-
-                        FlatButton
-                          (
-
-                          onPressed: () {
-                            int orig=b4(letter);
-                                  print(orig);
-                                    print(letter);
-
-                                    int sum = num1 + num2 + num3 + num4 + num5 + num6;
-                                    print(sum);
-                                    if (sum > 0) {
-                                    if (orig == 0) {
-                                      speak("wrong You need to answer is letter "+letter);
-                                    }
-                                    else if (num4 == 0) {
-                                    speak("clicked this already");
-                                    }
-                                    else {
-                                    num4 = num4 - 1;
-                                    sum = sum - 1;
-                                    print(num4);
-                                    print(sum);
-                                    speak("correct");
-                                    if (sum == 0) {
-                                    setState(() {
-                                      HapticFeedback.lightImpact();
-                                    temp = temp + 1;
-
-                                    letter = let(temp);
-                                      speak(letter);
-                                    num1 = b1(letter);
-                                    num2 = b2(letter);
-                                    num3 = b3(letter);
-                                    num4 = b4(letter);
-                                    num5 = b5(letter);
-                                    num6 = b6(letter);
-                                    });
-                                    }
-                                    }
-                                    }
-                                    },
-
-                          child: Image.asset( "assets/images/4.png",height: 550,semanticLabel: "4",),
-                        ),
-
-                        FlatButton
-                          (
-                          onPressed: () {
-                            int orig=b2(letter);
-                            print(orig);
-                            print(letter);
-
-                            int sum = num1 + num2 + num3 + num4 + num5 + num6;
-                            print(sum);
-                            if (sum > 0) {
-                            if (orig == 0) {
-                              speak("wrong You need to answer is letter "+letter);
-                            }
-                            else if (num2 == 0) {
-                            speak("clicked this already");
-                            }
-                            else {
-                            num2 = num2 - 1;
-                            sum = sum - 1;
-                            print(num2);
-                            print(sum);
-                            speak("correct");
-                            if (sum == 0) {
-                            setState(() {
-                              HapticFeedback.lightImpact();
-                            temp = temp + 1;
-
-                            letter = let(temp);
-                              speak(letter);
-                            num1 = b1(letter);
-                            num2 = b2(letter);
-                            num3 = b3(letter);
-                            num4 = b4(letter);
-                            num5 = b5(letter);
-                            num6 = b6(letter);
-                            });
-                            }
-                            }
-                            }
-                            },
-
-
-                          child: Image.asset( "assets/images/2.png",height: 550,semanticLabel: "2",),
-                        ),
-
-                        FlatButton
-                          (
-                          onPressed: () {
-
-
-                            int orig=b5(letter);
-                            print(orig);
-                            print(letter);
-
-                            int sum = num1 + num2 + num3 + num4 + num5 + num6;
-                            print(sum);
-                            if (sum > 0) {
-                              if (orig == 0) {
-                                speak("wrong You need to answer is letter "+letter);
-                              }
-                              else if (num5 == 0) {
-                                speak("clicked this already");
-                              }
-                              else {
-                                num5 = num5 - 1;
-                                sum = sum - 1;
-                                print(num5);
-                                print(sum);
-                                speak("Correct");
-                                if (sum == 0) {
-                                  setState(() {
-                                    HapticFeedback.lightImpact();
-                                    temp = temp + 1;
-                                    letter = let(temp);
-                                    speak(letter);
-                                    num1 = b1(letter);
-                                    num2 = b2(letter);
-                                    num3 = b3(letter);
-                                    num4 = b4(letter);
-                                    num5 = b5(letter);
-                                    num6 = b6(letter);
-                                  });
-                                }
-                              }
-                            }
-
-                            HapticFeedback.heavyImpact();
-                          },
-                          child: Image.asset( "assets/images/5.png",height: 550,semanticLabel: "5",),
-                        ),
-                        FlatButton
-                          (
-                          onPressed: () {
-                            int orig=b3(letter);
-                            print(orig);
-                            print(letter);
-
-                            int sum = num1 + num2 + num3 + num4 + num5 + num6;
-                            print(sum);
-                            if (sum > 0) {
-                              if (orig == 0) {
-                                speak("wrong You need to answer is letter "+letter);
-                              }
-                              else if (num3 == 0) {
-                                speak("clicked this already");
-                              }
-                              else {
-                                num3 = num3 - 1;
-                                sum = sum - 1;
-                                print(num1);
-                                print(sum);
-                                if (sum == 0) {
-                                  setState(() {
-                                    HapticFeedback.lightImpact();
-                                    temp = temp + 1;
-                                    letter = let(temp);
-                                    num1 = b1(letter);
-                                    num2 = b2(letter);
-                                    num3 = b3(letter);
-                                    num4 = b4(letter);
-                                    num5 = b5(letter);
-                                    num6 = b6(letter);
-                                  });
-                                }
-                              }
-                            }
-
-                          },
-                          child: Image.asset( "assets/images/3.png",height: 550,semanticLabel: "3",),
-                        ),
-
-                        FlatButton
-                          (
-                          onPressed: () {
-
-                            int orig=b6(letter);
-                            print(orig);
-                            print(letter);
-
-                            int sum = num1 + num2 + num3 + num4 + num5 + num6;
-                            print(sum);
-                            if (sum > 0) {
-                              if (orig == 0) {
-                                speak("wrong You need to answer is letter "+letter);
-
-                              }
-                              else if (num6 == 0) {
-                                speak("clicked this already");
-                              }
-                              else {
-                                num6 = num6 - 1;
-                                sum = sum - 1;
-
-                                if (sum == 0) {
-                                  setState(() {
-                                    HapticFeedback.lightImpact();
-                                    temp = temp + 1;
-                                    speak(letter);
-                                    letter = let(temp);
-                                    num1 = b1(letter);
-                                    num2 = b2(letter);
-                                    num3 = b3(letter);
-                                    num4 = b4(letter);
-                                    num5 = b5(letter);
-                                    num6 = b6(letter);
-                                  });
-                                }
-                              }
-                            }
-                          },
-                          child: Image.asset( "assets/images/6.png",height: 550,semanticLabel: "6",),
-                        ),
-
-
-
-                      ],
-
-
-                    ),
-
-
-
-
-
-                  ),
-                  //  BottomNavBar()
-                ],
-              ),
-            ),
-          ),
-
-
 
           SafeArea(
 
@@ -1093,9 +786,9 @@ print(messages);
 
                   Center(
                     child:  Text(
-                      '$letter',
+                      '',
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 5,
                         color: Color(0xFF00315c),
                         fontFamily: 'gotham',)
                       ,
