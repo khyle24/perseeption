@@ -5,6 +5,7 @@ import 'package:perseeption/announcement.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
 import 'rand.dart';
+import 'package:perseeption/components/AdvanceCustomAlert.dart';
 import 'dart:math';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart' show getApplicationDocumentsDirectory;
@@ -176,6 +177,21 @@ class _InfoScreenState extends State<letterstab> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = let(temp);
+                                      if(numi=="Done")
+                                      {
+                                        int count=0;
+                                        speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return WillPopScope(
+                                                onWillPop: () async => false,
+                                                child:
+                                                AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                            });
+
+                                      }
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
@@ -314,6 +330,21 @@ class _InfoScreenState extends State<letterstab> {
                                       temp = temp + 1;
                                       numi = let(temp);
                                       speak(numi);
+                                      if(numi=="Done")
+                                      {
+                                        int count=0;
+                                        speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return WillPopScope(
+                                                onWillPop: () async => false,
+                                                child:
+                                                AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                            });
+
+                                      }
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
@@ -350,12 +381,28 @@ class _InfoScreenState extends State<letterstab> {
                                   sum = sum - 1;
                                   print(num1);
                                   print(sum);
+                                  speak("correct");
                                   if (sum == 0) {
                                     setState(() {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = let(temp);
                                       speak(numi);
+                                      if(numi=="Done")
+                                      {
+                                        int count=0;
+                                        speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return WillPopScope(
+                                                onWillPop: () async => false,
+                                                child:
+                                                AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                            });
+
+                                      }
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
@@ -392,13 +439,29 @@ class _InfoScreenState extends State<letterstab> {
                                 else {
                                   num6 = num6 - 1;
                                   sum = sum - 1;
-
+                                  speak("correct");
                                   if (sum == 0) {
                                     setState(() {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
-                                      speak(numi);
                                       numi = let(temp);
+                                      speak(numi);
+                                      if(numi=="Done")
+                                      {
+                                        int count=0;
+                                        speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return WillPopScope(
+                                                onWillPop: () async => false,
+                                                child:
+                                                AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                            });
+
+                                      }
+
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);

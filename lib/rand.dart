@@ -35,7 +35,7 @@ String let(int num)
   arr[20] = 'U';
   arr[21] = 'V';
   arr[22] = 'W';
-  arr[23] = 'Z';
+  arr[23] = 'X';
   arr[24] = 'Y';
   arr[25] = 'Z';
   arr[26] = 'Done';
@@ -111,7 +111,8 @@ int b1(String letter)
 arr[0]=0;
 if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D"||letter=="3"||letter=="4"||letter=="5"
 ||letter=="E"||letter=="6"||letter=="7"||letter=="8"||letter=="F"||letter=="G"||letter=="H" ||letter=="K" ||letter=="L"
-    ||letter=="M" ||letter=="N" ||letter=="O" ||letter=="P")
+    ||letter=="M" ||letter=="N" ||letter=="O" ||letter=="P"||letter=="Q"||letter=="R"||letter=="U"||letter=="V"||letter=="X"
+    ||letter=="Y"||letter=="Z")
   {
 
     arr[0]=1;
@@ -125,7 +126,8 @@ int b2(String letter)
   var arr = new List(7);
   arr[1]=0;
   if(letter=="B"||letter=="2"||letter=="6"||letter=="7"||letter=="8"||letter=="9"||letter=="0"||letter=="F"||letter=="G"
-      ||letter=="H" ||letter=="I" ||letter=="J" ||letter=="L" ||letter=="P")
+      ||letter=="H" ||letter=="I" ||letter=="J" ||letter=="L" ||letter=="P" ||letter=="Q"||letter=="R"||letter=="S"||letter=="T"
+      ||letter=="V"||letter=="W")
   {
 
     arr[1]=1;
@@ -144,7 +146,8 @@ int b3(String letter)
     arr[2]=0;
 
   if(letter=="Apostrophe"||letter=="Asterisk *" ||letter=="K" ||letter=="L" ||letter=="M" ||letter=="N" ||letter=="O"
-      ||letter=="P")
+      ||letter=="P"||letter=="Q"||letter=="R"||letter=="S"||letter=="T"||letter=="U"||letter=="V"
+      ||letter=="X"||letter=="Y"||letter=="Z")
   {
 
     arr[2]=1;
@@ -164,7 +167,8 @@ int b4(String letter)
 
   arr[3]=0;
   if(letter=="C"||letter=="D"||letter=="3"||letter=="4"||letter=="6"||letter=="7"||letter=="9"||letter=="0"||letter=="F"||letter=="G"
-      ||letter=="I" ||letter=="J" ||letter=="M" ||letter=="N" ||letter=="P")
+      ||letter=="I" ||letter=="J" ||letter=="M" ||letter=="N" ||letter=="P"||letter=="Q"||letter=="S"||letter=="T"||letter=="W"
+      ||letter=="X"||letter=="Y")
   {
 
     arr[3]=1;
@@ -182,7 +186,8 @@ int b5(String letter)
 
   arr[4]=0;
   if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0"||letter=="E"||letter=="Asterisk *"||letter=="G"
-      ||letter=="H" ||letter=="J" ||letter=="N" ||letter=="O")
+      ||letter=="H" ||letter=="J" ||letter=="N" ||letter=="O"||letter=="Q"||letter=="R"||letter=="T"||letter=="W"||letter=="Y"
+      ||letter=="Z")
   {
 
     arr[4]=1;
@@ -199,6 +204,11 @@ int b6(String letter)
   var arr = new List(7);
 
   arr[5]=0;
+
+  if(letter=="U"||letter=="V"||letter=="W"||letter=="X"||letter=="Y"||letter=="Z")
+    {
+      arr[5]=1;
+    }
 
 
   return arr[5];
