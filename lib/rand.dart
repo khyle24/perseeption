@@ -110,7 +110,8 @@ int b1(String letter)
   var arr = new List(7);
 arr[0]=0;
 if(letter=="A"||letter=="B"||letter=="C"||letter=="1"||letter=="2"||letter=="D"||letter=="3"||letter=="4"||letter=="5"
-||letter=="E"||letter=="6"||letter=="7"||letter=="8"||letter=="F"||letter=="G")
+||letter=="E"||letter=="6"||letter=="7"||letter=="8"||letter=="F"||letter=="G"||letter=="H" ||letter=="K" ||letter=="L"
+    ||letter=="M" ||letter=="N" ||letter=="O" ||letter=="P")
   {
 
     arr[0]=1;
@@ -123,7 +124,8 @@ int b2(String letter)
 
   var arr = new List(7);
   arr[1]=0;
-  if(letter=="B"||letter=="2"||letter=="6"||letter=="7"||letter=="8"||letter=="9"||letter=="0"||letter=="F"||letter=="G")
+  if(letter=="B"||letter=="2"||letter=="6"||letter=="7"||letter=="8"||letter=="9"||letter=="0"||letter=="F"||letter=="G"
+      ||letter=="H" ||letter=="I" ||letter=="J" ||letter=="L" ||letter=="P")
   {
 
     arr[1]=1;
@@ -141,7 +143,8 @@ int b3(String letter)
 
     arr[2]=0;
 
-  if(letter=="Apostrophe"||letter=="Asterisk *")
+  if(letter=="Apostrophe"||letter=="Asterisk *" ||letter=="K" ||letter=="L" ||letter=="M" ||letter=="N" ||letter=="O"
+      ||letter=="P")
   {
 
     arr[2]=1;
@@ -160,7 +163,8 @@ int b4(String letter)
   var arr = new List(7);
 
   arr[3]=0;
-  if(letter=="C"||letter=="D"||letter=="3"||letter=="4"||letter=="6"||letter=="7"||letter=="9"||letter=="0"||letter=="F"||letter=="G")
+  if(letter=="C"||letter=="D"||letter=="3"||letter=="4"||letter=="6"||letter=="7"||letter=="9"||letter=="0"||letter=="F"||letter=="G"
+      ||letter=="I" ||letter=="J" ||letter=="M" ||letter=="N" ||letter=="P")
   {
 
     arr[3]=1;
@@ -177,7 +181,8 @@ int b5(String letter)
   var arr = new List(7);
 
   arr[4]=0;
-  if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0"||letter=="E"||letter=="Asterisk *"||letter=="G")
+  if(letter=="D"||letter=="4"||letter=="5"||letter=="7"||letter=="8"||letter=="0"||letter=="E"||letter=="Asterisk *"||letter=="G"
+      ||letter=="H" ||letter=="J" ||letter=="N" ||letter=="O")
   {
 
     arr[4]=1;

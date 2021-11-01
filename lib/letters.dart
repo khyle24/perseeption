@@ -307,6 +307,7 @@ class _InfoScreenState extends State<letterstab> {
                                   sum = sum - 1;
                                   print(num5);
                                   print(sum);
+                                  speak("correct");
                                   if (sum == 0) {
                                     setState(() {
                                       HapticFeedback.lightImpact();
