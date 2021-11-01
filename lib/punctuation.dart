@@ -140,7 +140,7 @@ class _InfoScreenState extends State<punctua> {
                       child: Text(
                         '$numi',
                         style: TextStyle(
-                          fontSize: 35,
+                          fontSize: 30,
                           color: Color(0xFF00315c),
                           fontFamily: 'gotham',)
                         ,
@@ -300,7 +300,7 @@ class _InfoScreenState extends State<punctua> {
                               print(sum);
                               if (sum > 0) {
                                 if (orig == 0) {
-                                  speak("wrong You need to answer is number "+numi);
+                                  speak("wrong You need to answer is "+numi);
                                 }
                                 else if (num2 == 0) {
                                   speak("clicked this already");
@@ -362,7 +362,7 @@ class _InfoScreenState extends State<punctua> {
                               print(sum);
                               if (sum > 0) {
                                 if (orig == 0) {
-                                  speak("wrong You need to answer is number "+numi);
+                                  speak("wrong You need to answer is "+numi);
                                 }
                                 else if (num5 == 0) {
                                   speak("clicked this already");
@@ -405,7 +405,7 @@ class _InfoScreenState extends State<punctua> {
                               print(sum);
                               if (sum > 0) {
                                 if (orig == 0) {
-                                  speak("wrong You need to answer is number "+numi);
+                                  speak("wrong You need to answer is"+numi);
                                 }
                                 else if (num3 == 0) {
                                   speak("clicked this already");
@@ -464,7 +464,7 @@ class _InfoScreenState extends State<punctua> {
                               print(sum);
                               if (sum > 0) {
                                 if (orig == 0) {
-                                  speak("wrong You need to answer is number "+numi);
+                                  speak("wrong You need to answer is"+numi);
 
                                 }
                                 else if (num6 == 0) {
