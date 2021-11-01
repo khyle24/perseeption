@@ -165,6 +165,13 @@ class _Homepagestate extends State<HomePage> {
     callnumber = await getText1();
     callnumber2 = await getText2();
     messages = await getMes();
+
+    setState(() {
+    });
+  }
+
+
+  Future<void> loc() async {
     Position position = await _getGeoLocationPosition();
     GetAddressFromLatLong(position);
     setState(() {
@@ -174,6 +181,7 @@ class _Homepagestate extends State<HomePage> {
   @override
   void initState() {
     loadPrefs();
+
     //_determinePosition();
     //_getCurrentLocation();
     // ourText = await getText();
@@ -227,7 +235,7 @@ print(height);
           });
 if(index==0)
   {
-
+    loc();
   }
           if (index == 2) {
 temp=0;
@@ -282,7 +290,6 @@ num6 = 0;
 
 
                   onPressed: ()async {
-
                     print(messages);
 
                   //  _determinePosition();

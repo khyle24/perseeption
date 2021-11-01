@@ -27,7 +27,8 @@ class _InfoScreenState extends State<settingsn> {
   double offset = 0;
   String phone1;
   String _chosenValue;
-
+  String location ='Null, Press Button';
+  String Address = 'No Internet';
 
   Future<Position> _getGeoLocationPosition() async {
     bool serviceEnabled;
@@ -63,7 +64,14 @@ class _InfoScreenState extends State<settingsn> {
     return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
   }
 
-
+  Future<void> GetAddressFromLatLong(Position position)async {
+    List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+    print(placemarks);
+    Placemark place = placemarks[0];
+    Address = '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
+    setState(()  {
+    });
+  }
 
 
   final Telephony telephony = Telephony.instance;
@@ -77,6 +85,7 @@ class _InfoScreenState extends State<settingsn> {
     ourText2 = await getText2();
     // prefs = await SharedPreferences.getInstance();
     message= await getMes();
+
     Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
 
     bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
