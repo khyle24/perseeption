@@ -16,12 +16,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-class punct extends StatefulWidget {
+class word extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
 }
 
-class _InfoScreenState extends State<punct> {
+class _InfoScreenState extends State<word> {
   int pageChanged = 1;
   int temp;
   var numi;

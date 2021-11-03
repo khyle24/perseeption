@@ -34,7 +34,7 @@ class AdvanceCustomAlert extends StatelessWidget {
                       Navigator.of(context).popUntil((_) => count++ >= 2);
                     },
                       color: Colors.redAccent,
-                      child: Text('Done', style: TextStyle(color: Colors.white,fontSize: 80),),
+                      child: Text('Done', style: TextStyle(color: Colors.white,fontSize: 50),),
                     )
                   ],
                 ),

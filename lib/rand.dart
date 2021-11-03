@@ -63,28 +63,20 @@ String number(int num)
 
 String words(int num)
 {
-  List yourList = ["first item", "second item", "third item"];
+  var arr = new List();
+  List yourList = ["dart", "hello", "sex"];
   int randomIndex = Random().nextInt(yourList.length);
-  var arr = new List(11);
 
-  arr[0] = '1';
-  arr[1] = '2';
-  arr[2] = '3';
-  arr[3] = '4';
-  arr[4] = '5';
-  arr[5] = '6';
-  arr[6] = '7';
-  arr[7] = '8';
-  arr[8] = '9';
-  arr[9] = '0';
-  arr[10]='Done';
-  return arr[num];
+  String word= yourList[randomIndex];
+  var result = word.split('');
+  print(result);
+    return result[num];
 }
 
 String punc(int num)
 {
   var arr = new List(16);
-  arr[0] = 'Apostrophe';
+  arr[0] = "Apostrophe '";
   arr[1] = 'Asterisk *';
   arr[2] = 'Colon :';
   arr[3] = 'Comma ,';

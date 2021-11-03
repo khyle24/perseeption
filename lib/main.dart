@@ -19,7 +19,8 @@ import 'package:telephony/telephony.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-void main() => runApp(MaterialApp(home: HomePage(),));
+void main() => runApp(MaterialApp
+  (debugShowCheckedModeBanner: false,home: HomePage(),));
 
 class HomePage extends StatefulWidget {
   @override
@@ -193,6 +194,7 @@ class _Homepagestate extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -299,13 +301,34 @@ num6 = 0;
                          showDialog<String>(
                            barrierDismissible: false,
                            context: context,
+
                           builder: (BuildContext context) => AlertDialog(
                             title: const Text('Alert'),
                             content: const Text('No Contact Number inserted. Go to the contact form.'),
                             actions: <Widget>[
                               TextButton(
-                                onPressed: () =>  Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => settingsn()),),
+
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => settingsn()),
+                                  );
+
+
+
+                                },
+
+
+
+
+
+                    /*
+                    Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => PathName()),
+                    (Route<dynamic> route) => false,
+                    );
+*/
                                 child: const Text('OK'),
                               ),
                             ],
