@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:perseeption/rand.dart';
 import 'package:perseeption/announcement.dart';
+import 'package:perseeption/words.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
 import 'package:perseeption/numbers.dart';
@@ -880,7 +881,8 @@ print(messages);
                         FlatButton
                           (
                           onPressed: () {
-
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => word()),);
                           },
 
 

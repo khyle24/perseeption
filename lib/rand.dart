@@ -63,14 +63,17 @@ String number(int num)
 
 String words(int num)
 {
+
   var arr = new List();
-  List yourList = ["dart", "hello", "sex"];
+  List yourList = ["MAN", "GIRL", "BUS"];
   int randomIndex = Random().nextInt(yourList.length);
 
   String word= yourList[randomIndex];
   var result = word.split('');
   print(result);
-    return result[num];
+
+    return (result[num]);
+
 }
 
 String punc(int num)

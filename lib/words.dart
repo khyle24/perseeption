@@ -110,7 +110,7 @@ class _InfoScreenState extends State<word> {
               num5 = 0;
               num6 = 0;
               temp=0;
-              numi = number(temp);
+              numi = words(temp);
 
 
               speak("You need to answer is number"+numi);

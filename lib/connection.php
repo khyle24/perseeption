@@ -25,3 +25,11 @@ header('Content=Type: application/json');
 echo json_encode($response);
 
 ?>
+
+const db = mysql.createConnection({
+  host: "us-cdbr-east-04.cleardb.com",
+  port: 3306,
+  user: "bc62b0ccf843e4",
+  password: "8a4f31cb",
+  database: "heroku_ac00d9532dbe104",
+});

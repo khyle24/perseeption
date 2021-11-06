@@ -16,6 +16,7 @@ class _InfoScreenState extends State<announce> {
 
   @override
   void initState() {
+    getData();
     // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
@@ -34,17 +35,14 @@ class _InfoScreenState extends State<announce> {
     });
   }
 
+Future getData()async{
+    var url='https://perseeption-tromagade.herokuapp.com/api/getAnnouncement';
+    http.Response response =await http.get(url);
+    var data =jsonDecode(response.body);
+    print(data.toString());
+}
 
 
-  void fetchData() async {
-    final response = await http.get('https://db.skidax.com/sql.php?server=1&db=perseeption_db-36376157&table=admin_announcement&pos=0');
-
-    if (response.statusCode == 200) {
-      setState(() {
-        data = json.decode(response.body);
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +68,9 @@ class _InfoScreenState extends State<announce> {
                       shrinkWrap: true,
                       itemCount: data.length,
                       itemBuilder: (BuildContext context, int index) => ListTile(
-                        title: Text(data[index]['title']),
+                        title: Text(data[index]['ANNOUNCEMENT_TITLE']),
                       )),
-
+                  //Text(data[index]['productName']),
                   Text("Announcements", style: kTitleTextstyle),
                   SizedBox(height: 20),
                   PreventCard(

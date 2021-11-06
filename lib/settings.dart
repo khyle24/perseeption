@@ -21,8 +21,8 @@ class _InfoScreenState extends State<settingsn> {
   String num1;
   String num2;
   String temp;
-  String ourText="";
-  String ourText2="";
+  String ourText;
+  String ourText2;
   String message="";
   double offset = 0;
   String phone1;
@@ -86,7 +86,7 @@ class _InfoScreenState extends State<settingsn> {
     // prefs = await SharedPreferences.getInstance();
     message= await getMes();
 
-    Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
+   // Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
 
     bool permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
     setState(() {
@@ -271,7 +271,7 @@ class _InfoScreenState extends State<settingsn> {
                   ),
                   SizedBox(height: size.height * 0.01),
 
-
+                  if(ourText != null&&ourText2!=null)
                      Text(
                    "1st Number:$ourText \n \n"
                      "2nd Number:$ourText2\n \n"
