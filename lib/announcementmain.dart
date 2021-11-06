@@ -3,20 +3,23 @@ import 'package:perseeption/constants.dart';
 import 'package:perseeption/headerc.dart';
 import 'dart:io';
 import 'dart:convert';
+import 'package:perseeption/announce.dart';
+import 'package:perseeption/announce_api.dart';
 import 'package:http/http.dart' as http;
-class announce extends StatefulWidget {
+class announcementmain extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
 }
 
-class _InfoScreenState extends State<announce> {
+class _InfoScreenState extends State<announcementmain> {
   List data = [];
   final controller = ScrollController();
   double offset = 0;
 
   @override
   void initState() {
-    getData();
+    getAnounce();
+   // getData();
     // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
@@ -59,17 +62,37 @@ Future getData()async{
             offset: offset,
            ),
             Padding(
+
               padding: EdgeInsets.symmetric(horizontal: 25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: FutureBuilder(
+                future: getAnounce(),
+                builder: (context,snapshot)
+                {
+                  if(snapshot.hasData)
+                    {
+                      return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context,index)
+                        {
+                          Announcement anouncemen = snapshot.data[index];
+                          return Text('${anouncemen.announcementContent}');
+                        },
+                      );
+                    }
+                  return CircularProgressIndicator();
+                },
+               // crossAxisAlignment: CrossAxisAlignment.start,
+                /*
                 children: <Widget>[
 
                   ListView.builder(
                       shrinkWrap: true,
                       itemCount: data.length,
-                      itemBuilder: (BuildContext context, int index) => ListTile(
-                        title: Text(data[index]['ANNOUNCEMENT_TITLE']),
-                      )),
+                      itemBuilder: (BuildContext context, int index) =>
+                        Text(data[index]['ANNOUNCEMENT_TITLE']),
+
+                  ),
                   //Text(data[index]['productName']),
                   Text("Announcements", style: kTitleTextstyle),
                   SizedBox(height: 20),
@@ -98,7 +121,7 @@ Future getData()async{
                     title: "PAVIC General Assembly (Election of new Officers)",
                   ),
                   SizedBox(height: 50),
-                ],
+                ],*/
               ),
             )
           ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:perseeption/rand.dart';
-import 'package:perseeption/announcement.dart';
+import 'package:perseeption/announcementmain.dart';
 import 'package:perseeption/words.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
@@ -174,6 +174,7 @@ class _Homepagestate extends State<HomePage> {
 
 
   Future<void> loc() async {
+
     Position position = await _getGeoLocationPosition();
     GetAddressFromLatLong(position);
     setState(() {
@@ -412,7 +413,7 @@ print(messages);
                       onPressed: (){
 
                         Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => announce()),);
+                          MaterialPageRoute(builder: (context) => announcementmain()),);
                       },
                     ),
 
