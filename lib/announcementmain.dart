@@ -51,7 +51,7 @@ Future getData()async{
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        controller: controller,
+       // controller: controller,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -61,22 +61,55 @@ Future getData()async{
 
             offset: offset,
            ),
-            Padding(
 
-              padding: EdgeInsets.symmetric(horizontal: 25),
+
+          Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text('Announcements',
+                  style:kTitleTextstyle)),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+
               child: FutureBuilder(
+
                 future: getAnounce(),
                 builder: (context,snapshot)
+
                 {
+
                   if(snapshot.hasData)
                     {
+
                       return ListView.builder(
+                        controller: controller,
                         itemCount: snapshot.data.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context,index)
                         {
+
                           Announcement anouncemen = snapshot.data[index];
-                          return Text('${anouncemen.announcementContent}');
+                         return Padding(
+                              padding: const EdgeInsets.all(7.0),
+
+                            child: Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+
+                              children: <Widget>[
+
+                           PreventCard(text:
+                            "${anouncemen.announcementContent}",
+
+                              title: "${anouncemen.announcementTitle}",),
+                                //Text("${anouncemen.announcementTitle}"),
+                            //  Text('${anouncemen.announcementTitle}'),
+
+                              ],
+                            ),
+                            );
+
+
+                         // return Text('${anouncemen.announcementContent}');
                         },
                       );
                     }
@@ -85,14 +118,10 @@ Future getData()async{
                // crossAxisAlignment: CrossAxisAlignment.start,
                 /*
                 children: <Widget>[
+     PreventCard(text:
+                          "${anouncemen.announcementContent}",
 
-                  ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: data.length,
-                      itemBuilder: (BuildContext context, int index) =>
-                        Text(data[index]['ANNOUNCEMENT_TITLE']),
-
-                  ),
+                            title: "${anouncemen.announcementContent}",);
                   //Text(data[index]['productName']),
                   Text("Announcements", style: kTitleTextstyle),
                   SizedBox(height: 20),
