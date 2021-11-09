@@ -113,7 +113,7 @@ class _InfoScreenState extends State<word> {
               numi = words(temp);
 
 
-              speak("You need to answer is number"+numi);
+              speak("You need to answer is letter"+numi);
               Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
                 //code to run on every 5 seconds
 
@@ -140,22 +140,24 @@ class _InfoScreenState extends State<word> {
                       child: Text(
                         '$numi',
                         style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 30,
                           color: Color(0xFF00315c),
                           fontFamily: 'gotham',)
                         ,
                       ),),
 
-
-                    Expanded(
+                    Container(
                       // child: new Center(
+                      width: MediaQuery.of(context).size.width*.95,
+                      height: MediaQuery.of(context).size.height*.90,
                       child: GridView.count(
                         physics: new NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 2,
-                        childAspectRatio: .70,
+                        childAspectRatio: MediaQuery.of(context).size.height /950,
                         crossAxisSpacing: 40,
                         mainAxisSpacing: 20,
+
 
                         children: <Widget>[
                           FlatButton
@@ -184,7 +186,7 @@ class _InfoScreenState extends State<word> {
                                     setState(() {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
-                                      numi = number(temp);
+                                      numi = words(temp);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
@@ -231,7 +233,7 @@ class _InfoScreenState extends State<word> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
 
-                                      numi = number(temp);
+                                      numi = words(temp);
                                       speak(numi);
                                       if(numi=="Done")
                                       {
@@ -314,7 +316,7 @@ class _InfoScreenState extends State<word> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
 
-                                      numi = number(temp);
+                                      numi = words(temp);
                                       speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
@@ -360,7 +362,7 @@ class _InfoScreenState extends State<word> {
                                     setState(() {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
-                                      numi = number(temp);
+                                      numi = words(temp);
                                       speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
@@ -403,7 +405,7 @@ class _InfoScreenState extends State<word> {
                                     setState(() {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
-                                      numi = number(temp);
+                                      numi = words(temp);
                                       speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
@@ -447,7 +449,7 @@ class _InfoScreenState extends State<word> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       speak(numi);
-                                      numi = number(temp);
+                                      numi = words(temp);
                                       speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);

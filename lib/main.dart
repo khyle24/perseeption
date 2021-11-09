@@ -339,7 +339,7 @@ num6 = 0;
                       }
                     else
                       {
-
+                        loc();
                         FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
                         telephony.sendSms(
                             to:callnumber,

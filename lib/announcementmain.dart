@@ -177,12 +177,12 @@ class PreventCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: SizedBox(
-        height: 156,
+        height: 190,
         child: Stack(
           alignment: Alignment.centerRight,
           children: <Widget>[
             Container(
-              height: 136,
+              height: 190,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -201,7 +201,7 @@ class PreventCard extends StatelessWidget {
               left: 10,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                height: 136,
+                height: 190,
                 width: MediaQuery.of(context).size.width - 70,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -218,7 +218,7 @@ class PreventCard extends StatelessWidget {
                     Expanded(
                       child: Text(
                         text,
-                        maxLines: 7,
+                        maxLines: 10,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.white,
