@@ -79,7 +79,7 @@ class _InfoScreenState extends State<letterstab> {
       await flutterTts.setSpeechRate(0.9);
       await flutterTts.speak(tlk);
     }
-
+    double height = MediaQuery.of(context).size.height;
 
     Size size = MediaQuery.of(context).size;
 
@@ -146,7 +146,7 @@ class _InfoScreenState extends State<letterstab> {
                         physics: new NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 2,
-                        childAspectRatio: MediaQuery.of(context).size.height /950,
+                        childAspectRatio: MediaQuery.of(context).size.height /(height+230),
                         crossAxisSpacing: 40,
                         mainAxisSpacing: 20,
 

@@ -24,6 +24,7 @@ class word extends StatefulWidget {
 class _InfoScreenState extends State<word> {
   int pageChanged = 1;
   int temp;
+  var m;
   var numi;
   int num1 = 0,
       num2 = 0,
@@ -73,7 +74,7 @@ class _InfoScreenState extends State<word> {
 
   @override
   Widget build(BuildContext context) {
-
+    double height = MediaQuery.of(context).size.height;
     final PageController controller = PageController(initialPage: 1);
 
     Future speak(String tlk) async {
@@ -102,6 +103,7 @@ class _InfoScreenState extends State<word> {
             });
 
             if (index == 0) {
+
 
 
               temp=0;
@@ -134,7 +136,7 @@ class _InfoScreenState extends State<word> {
                 num6 = 0;
               }
 
-              print("You need to answer is letter"+numi);
+             // print("You need to answer is letter"+m);
               speak("You need to answer is letter "+numi);
               Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
                 //code to run on every 5 seconds
@@ -176,7 +178,7 @@ class _InfoScreenState extends State<word> {
                         physics: new NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 2,
-                        childAspectRatio: MediaQuery.of(context).size.height /950,
+                        childAspectRatio: MediaQuery.of(context).size.height /(height+230),
                         crossAxisSpacing: 40,
                         mainAxisSpacing: 20,
 

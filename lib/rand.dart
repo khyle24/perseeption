@@ -79,8 +79,6 @@ String number(int num)
 
   List yourList = ["MAN", "GIRL", "BUS"];
 
-
-
 String words(int num)
 {
   var result;
@@ -103,6 +101,7 @@ String words(int num)
   //  word= yourList[temp];
   //  result= word.split('');
     word= yourList[temp];
+
     result= word.split('');
 
   }

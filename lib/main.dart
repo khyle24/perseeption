@@ -313,7 +313,7 @@ num6 = 0;
 
                   onPressed: ()async {
                     print(messages);
-
+                    loc();
                   //  _determinePosition();
                     if(callnumber==null||callnumber2==null)
                       {
@@ -357,7 +357,7 @@ num6 = 0;
                       }
                     else
                       {
-                        loc();
+
                         FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
                         telephony.sendSms(
                             to:callnumber,
@@ -525,7 +525,7 @@ print(messages);
                       physics: new NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: 2,
-                      childAspectRatio: MediaQuery.of(context).size.height /950,
+                      childAspectRatio: MediaQuery.of(context).size.height /(height+230),
                       crossAxisSpacing: 40,
                       mainAxisSpacing: 20,
 

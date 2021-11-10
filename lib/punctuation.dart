@@ -73,7 +73,7 @@ class _InfoScreenState extends State<punctua> {
 
   @override
   Widget build(BuildContext context) {
-
+    double height = MediaQuery.of(context).size.height;
     final PageController controller = PageController(initialPage: 1);
 
     Future speak(String tlk) async {
@@ -155,7 +155,7 @@ class _InfoScreenState extends State<punctua> {
                         physics: new NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 2,
-                        childAspectRatio: MediaQuery.of(context).size.height /950,
+                        childAspectRatio: MediaQuery.of(context).size.height /(height+230),
                         crossAxisSpacing: 40,
                         mainAxisSpacing: 20,
 
