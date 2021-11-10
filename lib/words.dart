@@ -25,7 +25,7 @@ class _InfoScreenState extends State<word> {
   int pageChanged = 1;
   int temp;
   var numi;
-  int num1 = 1,
+  int num1 = 0,
       num2 = 0,
       num3 = 0,
       num4 = 0,
@@ -103,17 +103,39 @@ class _InfoScreenState extends State<word> {
 
             if (index == 0) {
 
-              num1 = 1;
-              num2 = 0;
-              num3 = 0;
-              num4 = 0;
-              num5 = 0;
-              num6 = 0;
+
               temp=0;
               numi = words(temp);
+              if(numi=="M")
+                {
+                  num1 = 1;
+                  num2 = 0;
+                  num3 = 1;
+                  num4 = 1;
+                  num5 = 0;
+                  num6 = 0;
+                }
+              if(numi=="G")
+              {
+                num1 = 1;
+                num2 = 1;
+                num3 = 0;
+                num4 = 1;
+                num5 = 1;
+                num6 = 0;
+              }
+              if(numi=="B")
+              {
+                num1 = 1;
+                num2 = 1;
+                num3 = 0;
+                num4 = 0;
+                num5 = 0;
+                num6 = 0;
+              }
 
-
-              speak("You need to answer is letter"+numi);
+              print("You need to answer is letter"+numi);
+              speak("You need to answer is letter "+numi);
               Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
                 //code to run on every 5 seconds
 

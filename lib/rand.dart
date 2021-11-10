@@ -61,19 +61,52 @@ String number(int num)
   return arr[num];
 }
 
+  List yourList = ["MAN", "GIRL", "BUS"];
+
+
+
 String words(int num)
 {
+  var result;
+  int temp=0;
+  var word;
+  if(num==0&&temp==0)
+    {
+      yourList.shuffle();
+      //int randomIndex = Random().nextInt(yourList.length);
+     word= yourList[temp];
+      result= word.split('');
+      print(yourList);
+    }
 
-  var arr = new List();
-  List yourList = ["MAN", "GIRL", "BUS"];
-  int randomIndex = Random().nextInt(yourList.length);
+  //int randomIndex = Random().nextInt(yourList.length);
+  word= yourList[temp];
+ result= word.split('');
 
-  String word= yourList[randomIndex];
-  var result = word.split('');
-  print(result);
+  if(result.length==num)
+  {
+    temp =temp+1;
+    num=num=0;
+    word= yourList[temp];
+    result= word.split('');
+    print(num);
 
-    return (result[num]);
+  }
 
+  print(yourList);
+  word= yourList[temp];
+  result= word.split('');
+  print(yourList);
+ print(num);
+  print(num);
+  print(num);
+  return (result[num]);
+  //int randomIndex = Random().nextInt(yourList.length);
+  //var element = yourList[_random.nextInt(yourList.length)];
+ // yourList[Random().nextInt(yourList.length)];
+//print(yourList);
+  //  var word= yourList[randomIndex];
+   // String result= youList.split('');
 }
 
 String punc(int num)
