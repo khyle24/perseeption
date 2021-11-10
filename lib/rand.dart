@@ -9,6 +9,22 @@ String generateRandomString(int len) {
 }
 
 
+String lett(int num)
+{
+  var arr = new List(6);
+  arr[0] = 'A';
+  arr[1] = 'B';
+  arr[2] = 'C';
+  arr[3] = 'D';
+  arr[4] = 'E';
+  arr[5] = 'Done';
+
+
+  return arr[num];
+}
+
+
+
 String let(int num)
 {
   var arr = new List(27);
@@ -70,36 +86,31 @@ String words(int num)
   var result;
   int temp=0;
   var word;
+
   if(num==0&&temp==0)
     {
       yourList.shuffle();
       //int randomIndex = Random().nextInt(yourList.length);
      word= yourList[temp];
       result= word.split('');
-      print(yourList);
     }
-
-  //int randomIndex = Random().nextInt(yourList.length);
   word= yourList[temp];
  result= word.split('');
-
   if(result.length==num)
   {
     temp =temp+1;
-    num=num=0;
+   num=0;
+  //  word= yourList[temp];
+  //  result= word.split('');
     word= yourList[temp];
     result= word.split('');
-    print(num);
 
   }
 
-  print(yourList);
+
   word= yourList[temp];
   result= word.split('');
-  print(yourList);
- print(num);
-  print(num);
-  print(num);
+
   return (result[num]);
   //int randomIndex = Random().nextInt(yourList.length);
   //var element = yourList[_random.nextInt(yourList.length)];

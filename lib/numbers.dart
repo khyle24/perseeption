@@ -317,6 +317,22 @@ speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
                               temp = temp + 1;
 
                               numi = number(temp);
+
+                              if(numi=="Done")
+                              {
+                                int count=0;
+                                speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                showDialog(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return WillPopScope(
+                                        onWillPop: () async => false,
+                                        child:
+                                        AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                    });
+
+                              }
                               speak(numi);
                               num1 = b1(numi);
                               num2 = b2(numi);
@@ -364,6 +380,22 @@ speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
                               temp = temp + 1;
                               numi = number(temp);
                               speak(numi);
+
+                              if(numi=="Done")
+                              {
+                                int count=0;
+                                speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                showDialog(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return WillPopScope(
+                                        onWillPop: () async => false,
+                                        child:
+                                        AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                    });
+
+                              }
                               num1 = b1(numi);
                               num2 = b2(numi);
                               num3 = b3(numi);

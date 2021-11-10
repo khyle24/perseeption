@@ -5,6 +5,7 @@ import 'package:perseeption/announcementmain.dart';
 import 'package:perseeption/words.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
+import 'package:perseeption/components/AdvanceCustomAlert.dart';
 import 'package:perseeption/numbers.dart';
 import 'package:perseeption/letters.dart';
 import 'package:perseeption/punctuation.dart';
@@ -49,7 +50,24 @@ class _Homepagestate extends State<HomePage> {
   int h;
 
   final Telephony telephony = Telephony.instance;
+  String formatTime(int milliseconds) {
+    var secs = milliseconds ~/ 1000;
+    var hours = (secs ~/ 3600).toString().padLeft(2, '0');
+    var minutes = ((secs % 3600) ~/ 60).toString().padLeft(2, '0');
+    var seconds = (secs % 60).toString().padLeft(2, '0');
+    return "$hours:$minutes:$seconds";
+  }
 
+  Stopwatch _stopwatch;
+  void handleStartStop() {
+    if (_stopwatch.isRunning) {
+      _stopwatch.stop();
+
+    } else {
+      _stopwatch.start();
+    }
+    setState(() {});    // re-render the page
+  }
 /*
   String currentAddress='';
   Position currentposition;
@@ -184,7 +202,8 @@ class _Homepagestate extends State<HomePage> {
   @override
   void initState() {
     loadPrefs();
-
+    _stopwatch = Stopwatch();
+    handleStartStop();
     //_determinePosition();
     //_getCurrentLocation();
     // ourText = await getText();
@@ -243,19 +262,18 @@ if(index==0)
   }
           if (index == 2) {
 temp=0;
-letter = let(temp);
+letter = lett(temp);
 num1 = 1;
 num2 = 0;
 num3 = 0;
 num4 = 0;
 num5 = 0;
 num6 = 0;
-          //  Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
-          //         //code to run on every 5 seconds
-              //  letter = let(temp);
-           //   speak("You need to answer is letter"+letter);
-          //   });
-            speak("This is the Demo Instructions: Tap the button that corresponds to the combination of letter, it will inform you if you tap the wrong combination but proceeds if you got it right the first you need to answer is letter");
+
+            speak("This is the Demo Instructions: Tap the button that corresponds to the combination of letter, it will inform you if you tap the wrong combination but proceeds if you got the right answer you need to answer is letter"+letter);
+
+
+
 
 
 
@@ -541,7 +559,18 @@ print(messages);
                                   setState(() {
                                     HapticFeedback.lightImpact();
                                     temp = temp + 1;
-                                    letter = let(temp);
+                                    letter = lett(temp);
+
+                                    if(letter=="Done")
+                                    {
+                                      int count=0;
+                                      speak("Done for demo,Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds) +"Swipe right to go on Categories");
+
+
+
+                                    }
+
+
                                     num1 = b1(letter);
                                     num2 = b2(letter);
                                     num3 = b3(letter);
@@ -631,7 +660,7 @@ print(messages);
                                     HapticFeedback.lightImpact();
                                     temp = temp + 1;
 
-                                    letter = let(temp);
+                                    letter = lett(temp);
                                     speak(letter);
                                     num1 = b1(letter);
                                     num2 = b2(letter);
@@ -672,11 +701,21 @@ print(messages);
                                 sum = sum - 1;
                                 print(num5);
                                 print(sum);
+                                speak("correct");
                                 if (sum == 0) {
                                   setState(() {
                                     HapticFeedback.lightImpact();
                                     temp = temp + 1;
-                                    letter = let(temp);
+                                    letter = lett(temp);
+
+                                    if(letter=="Done")
+                                    {
+                                      int count=0;
+                                      speak("Done for demo,Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds) +"Swipe right to go on Categories");
+
+
+                                    }
+
                                     num1 = b1(letter);
                                     num2 = b2(letter);
                                     num3 = b3(letter);
@@ -713,11 +752,12 @@ print(messages);
                                 sum = sum - 1;
                                 print(num1);
                                 print(sum);
+                                speak("correct");
                                 if (sum == 0) {
                                   setState(() {
                                     HapticFeedback.lightImpact();
                                     temp = temp + 1;
-                                    letter = let(temp);
+                                    letter = lett(temp);
                                     num1 = b1(letter);
                                     num2 = b2(letter);
                                     num3 = b3(letter);
@@ -754,13 +794,13 @@ print(messages);
                               else {
                                 num6 = num6 - 1;
                                 sum = sum - 1;
-
+                                speak("correct");
                                 if (sum == 0) {
                                   setState(() {
                                     HapticFeedback.lightImpact();
                                     temp = temp + 1;
                                     speak(letter);
-                                    letter = let(temp);
+                                    letter = lett(temp);
                                     num1 = b1(letter);
                                     num2 = b2(letter);
                                     num3 = b3(letter);

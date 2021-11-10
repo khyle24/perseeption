@@ -178,6 +178,7 @@ class _InfoScreenState extends State<letterstab> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = let(temp);
+                                      speak(numi);
                                       if(numi=="Done")
                                       {
                                         int count=0;

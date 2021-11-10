@@ -209,6 +209,7 @@ class _InfoScreenState extends State<word> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = words(temp);
+
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
