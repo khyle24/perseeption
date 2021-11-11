@@ -273,7 +273,11 @@ num6 = 0;
             speak("This is the Demo Instructions: Tap the button that corresponds to the combination of letter, it will inform you if you tap the wrong combination but proceeds if you got the right answer you need to answer is letter"+letter);
 
 
+Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
+  //code to run on every 5 seconds
 
+   //speak("You need to answer is letter"+letter);
+});
 
 
 
@@ -871,13 +875,13 @@ print(messages);
                   Container(
 
                     width: MediaQuery.of(context).size.width*.95,
-                    height: MediaQuery.of(context).size.height*.92,
+                    height: MediaQuery.of(context).size.height*.93,
                     // child: new Center(
                     child: GridView.count(
                       physics: new NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: 1,
-                      childAspectRatio: MediaQuery.of(context).size.height /320,
+                      childAspectRatio: MediaQuery.of(context).size.height /(height/2.3),
                       crossAxisSpacing: .90,
                       mainAxisSpacing: 20,
 
