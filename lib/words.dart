@@ -5,6 +5,7 @@ import 'package:perseeption/provider/timer_provider.dart';
 import 'package:perseeption/announcementmain.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/components/AdvanceCustomAlert.dart';
+import 'package:perseeption/components/AdvanceCustomAlert2.dart';
 import 'package:perseeption/timer.dart';
 import 'rand.dart';
 import 'package:provider/provider.dart';
@@ -144,6 +145,18 @@ class _InfoScreenState extends State<word> {
                 // speak("You need to answer is number"+numi);
               });
 
+
+
+              speak("The word is "+numi);
+              showDialog(
+                  barrierDismissible: false,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return WillPopScope(
+                      onWillPop: () async => false,
+                      child:
+                      AdvanceCustomAlert2(text:numi), );
+                  });
 
             }
 
