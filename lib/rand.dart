@@ -99,7 +99,7 @@ String words(int num)
   word=yourList.join();
   if(word.length==num)
     {
-    return "DONE";
+    return "Done";
     }
   result= word.split('');
   return (result[num]);

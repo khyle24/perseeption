@@ -139,6 +139,16 @@ class _InfoScreenState extends State<word> {
                 num5 = 0;
                 num6 = 0;
               }
+              if(numi=="D")
+              {
+
+                num1 = 1;
+                num2 = 0;
+                num3 = 0;
+                num4 = 1;
+                num5 = 1;
+                num6 = 0;
+              }
 
              // print("You need to answer is letter"+m);
               speak("You need to answer is letter "+numi);
@@ -225,7 +235,22 @@ class _InfoScreenState extends State<word> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = words(temp);
+                                      speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                      if(numi=="Done")
+                                      {
+                                        int count=0;
+                                        speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return WillPopScope(
+                                                onWillPop: () async => false,
+                                                child:
+                                                AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                            });
 
+                                      }
                                       num1 = b1(numi);
                                       num2 = b2(numi);
                                       num3 = b3(numi);
@@ -356,6 +381,21 @@ class _InfoScreenState extends State<word> {
                                       temp = temp + 1;
 
                                       numi = words(temp);
+                                      if(numi=="Done")
+                                      {
+                                        int count=0;
+                                        speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return WillPopScope(
+                                                onWillPop: () async => false,
+                                                child:
+                                                AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                            });
+
+                                      }
                                       speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
@@ -402,6 +442,21 @@ class _InfoScreenState extends State<word> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = words(temp);
+                                      if(numi=="Done")
+                                      {
+                                        int count=0;
+                                        speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return WillPopScope(
+                                                onWillPop: () async => false,
+                                                child:
+                                                AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                            });
+
+                                      }
                                       speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
@@ -445,6 +500,21 @@ class _InfoScreenState extends State<word> {
                                       HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = words(temp);
+                                      if(numi=="Done")
+                                      {
+                                        int count=0;
+                                        speak("Your Time is:"+formatTime(_stopwatch.elapsedMilliseconds));
+                                        showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return WillPopScope(
+                                                onWillPop: () async => false,
+                                                child:
+                                                AdvanceCustomAlert(text: formatTime(_stopwatch.elapsedMilliseconds)), );
+                                            });
+
+                                      }
                                       speak(numi);
                                       num1 = b1(numi);
                                       num2 = b2(numi);
