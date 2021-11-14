@@ -5,6 +5,7 @@ import 'package:perseeption/announcementmain.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
 import 'rand.dart';
+import 'package:vibration/vibration.dart';
 import 'package:perseeption/components/AdvanceCustomAlert.dart';
 import 'dart:math';
 import 'package:sqflite/sqflite.dart';
@@ -173,9 +174,11 @@ class _InfoScreenState extends State<letterstab> {
                                   print(num1);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                      //HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = let(temp);
                                       speak(numi);
@@ -235,9 +238,11 @@ class _InfoScreenState extends State<letterstab> {
                                   print(num4);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                   //   HapticFeedback.lightImpact();
                                       temp = temp + 1;
 
                                       numi = let(temp);
@@ -279,9 +284,11 @@ class _InfoScreenState extends State<letterstab> {
                                   print(num2);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                     // HapticFeedback.lightImpact();
                                       temp = temp + 1;
 
                                       numi = let(temp);
@@ -326,9 +333,11 @@ class _InfoScreenState extends State<letterstab> {
                                   print(num5);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                     // HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = let(temp);
                                       speak(numi);
@@ -358,7 +367,7 @@ class _InfoScreenState extends State<letterstab> {
                                 }
                               }
 
-                              HapticFeedback.heavyImpact();
+                             // HapticFeedback.heavyImpact();
                             },
                             child: Image.asset( "assets/images/5.png",height: 550,semanticLabel: "5",),
                           ),
@@ -384,9 +393,11 @@ class _InfoScreenState extends State<letterstab> {
                                   print(num1);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                     // HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = let(temp);
                                       speak(numi);
@@ -442,9 +453,11 @@ class _InfoScreenState extends State<letterstab> {
                                   num6 = num6 - 1;
                                   sum = sum - 1;
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                     // HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi = let(temp);
                                       speak(numi);

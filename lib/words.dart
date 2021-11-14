@@ -25,6 +25,10 @@ class word extends StatefulWidget {
 class _InfoScreenState extends State<word> {
   int pageChanged = 1;
   int temp;
+  var result;
+  int tempp=0;
+  var word;
+
   var m;
   var numi;
   var hold;
@@ -117,10 +121,6 @@ print("lol$temp");
     //  var word= yourList[randomIndex];
     // String result= youList.split('');
   }
-
-
-
-
 
 
 
