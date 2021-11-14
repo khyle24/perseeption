@@ -27,6 +27,8 @@ class _InfoScreenState extends State<word> {
   int temp;
   var m;
   var numi;
+  var hold;
+  var wordsss;
   int num1 = 0,
       num2 = 0,
       num3 = 0,
@@ -53,6 +55,77 @@ class _InfoScreenState extends State<word> {
     }
     setState(() {});    // re-render the page
   }
+
+
+  List yourList = ["MAN", "GIRL", "BUS","BOY","DOG"];
+  String words(int num)
+  {
+    var result;
+    int temp=0;
+    var word;
+
+    if(num==0&&temp==0)
+    {
+      yourList.shuffle();
+
+      word=yourList.join();
+      print(word);
+      hold= yourList[temp];
+      result= word.split('');
+      //return (result[num]);
+      //  name(hold);
+      return (result[num]);
+    }
+    hold= yourList[temp];
+    word=yourList.join();
+    if(word.length==num)
+    {
+      return "Done";
+    }
+    result= word.split('');
+    return (result[num]);
+    /*
+  word= yourList[temp];
+  result= word.split('');
+  if(result.length==num)
+  {
+    temp =temp+1;
+    num=num=0;
+  //  word= yourList[temp];
+  //  result= word.split('');
+   // word= yourList[temp];
+  //result =result= word.split('');
+
+
+  }
+print("lol$temp");
+  print("adwadwadw$result[num]");
+      word= yourList[temp];
+      result= word.split('');
+      */
+
+
+    // return (result[num]);
+    //word= yourList[temp];
+    // result= word.split('');
+
+
+    //int randomIndex = Random().nextInt(yourList.length);
+    //var element = yourList[_random.nextInt(yourList.length)];
+    // yourList[Random().nextInt(yourList.length)];
+//print(yourList);
+    //  var word= yourList[randomIndex];
+    // String result= youList.split('');
+  }
+
+
+
+
+
+
+
+
+
   @override
   void initState() {
     _stopwatch = Stopwatch();
@@ -104,11 +177,11 @@ class _InfoScreenState extends State<word> {
             });
 
             if (index == 0) {
-
-
+          //    var low=yourList[temp];
 
               temp=0;
               numi = words(temp);
+
               if(numi=="M")
                 {
 
@@ -157,8 +230,8 @@ class _InfoScreenState extends State<word> {
 
                 // speak("You need to answer is number"+numi);
               });
-
-              speak("The word is "+numi);
+           print(wordsss);
+              speak("The word is "+hold);
               showDialog(
                   barrierDismissible: false,
                   context: context,
@@ -166,7 +239,7 @@ class _InfoScreenState extends State<word> {
                     return WillPopScope(
                       onWillPop: () async => false,
                       child:
-                      AdvanceCustomAlert2(text:numi), );
+                      AdvanceCustomAlert2(text:hold), );
                   });
 
             }
