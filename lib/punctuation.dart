@@ -7,6 +7,7 @@ import 'package:perseeption/settings.dart';
 import 'package:perseeption/components/AdvanceCustomAlert.dart';
 import 'package:perseeption/timer.dart';
 import 'rand.dart';
+import 'package:vibration/vibration.dart';
 import 'package:provider/provider.dart';
 import 'dart:math';
 import 'package:sqflite/sqflite.dart';
@@ -182,9 +183,11 @@ class _InfoScreenState extends State<punctua> {
                                   print(num1);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                     // HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi =  punc(temp);
                                       num1 = b1(numi);
@@ -228,9 +231,11 @@ class _InfoScreenState extends State<punctua> {
                                   print(num4);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                    //  HapticFeedback.lightImpact();
                                       temp = temp + 1;
 
                                       numi =  punc(temp);
@@ -311,9 +316,11 @@ class _InfoScreenState extends State<punctua> {
                                   print(num2);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                     // HapticFeedback.lightImpact();
                                       temp = temp + 1;
 
                                       numi = punc(temp);
@@ -373,9 +380,11 @@ class _InfoScreenState extends State<punctua> {
                                   print(num5);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                      //HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi =  punc(temp);
                                       speak(numi);
@@ -416,9 +425,11 @@ class _InfoScreenState extends State<punctua> {
                                   print(num1);
                                   print(sum);
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                      //HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       numi =  punc(temp);
                                       speak(numi);
@@ -474,9 +485,11 @@ class _InfoScreenState extends State<punctua> {
                                   num6 = num6 - 1;
                                   sum = sum - 1;
                                   speak("correct");
+                                  Vibration.vibrate(duration: 200);
                                   if (sum == 0) {
                                     setState(() {
-                                      HapticFeedback.lightImpact();
+                                      Vibration.vibrate(duration: 1000);
+                                     // HapticFeedback.lightImpact();
                                       temp = temp + 1;
                                       speak(numi);
                                       numi =  punc(temp);

@@ -5,6 +5,7 @@ import 'package:perseeption/announcementmain.dart';
 import 'package:perseeption/words.dart';
 import 'package:perseeption/settings.dart';
 import 'package:perseeption/timer.dart';
+import 'package:vibration/vibration.dart';
 import 'package:perseeption/components/AdvanceCustomAlert.dart';
 import 'package:perseeption/numbers.dart';
 import 'package:perseeption/letters.dart';
@@ -31,6 +32,7 @@ class HomePage extends StatefulWidget {
 
 
 class _Homepagestate extends State<HomePage> {
+  int call=0;
   int pageChanged = 1;
   int index = 1;
   var m;
@@ -316,6 +318,7 @@ Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
 
 
                   onPressed: ()async {
+                    call=call+1;
                     print(messages);
                     loc();
                   //  _determinePosition();
@@ -337,9 +340,6 @@ Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
                                   Navigator.push(context,
                                     MaterialPageRoute(builder: (context) => settingsn()),
                                   );
-
-
-
                                 },
 
 
@@ -361,12 +361,33 @@ Timer mytimer = Timer.periodic(Duration(seconds: 15), (timer) {
                       }
                     else
                       {
+                        if(call<3)
+                          {
+                            FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
+                            telephony.sendSms(
+                                to:callnumber,
+                                message: messages+" "+'${Address}'
+                            );
+                            telephony.sendSms(
+                                to:callnumber2,
+                                message: messages+" "+'${Address}'
+                            );
+                          }
 
-                        FlutterPhoneDirectCaller.callNumber("tel:$callnumber");
-                        telephony.sendSms(
-                            to:callnumber,
-                            message: messages+" "+'${Address}'
-                        );
+                        if(call>3)
+                          {
+                            FlutterPhoneDirectCaller.callNumber("tel:$callnumber2");
+                            telephony.sendSms(
+                                to:callnumber,
+                                message: messages+" "+'${Address}'
+                            );
+                            telephony.sendSms(
+                                to:callnumber2,
+                                message: messages+" "+'${Address}'
+                            );
+                          }
+
+
 
 
 print(messages);
@@ -560,9 +581,11 @@ print(messages);
                                 print(num1);
                                 print(sum);
                                 speak("correct");
+                                Vibration.vibrate(duration: 200);
                                 if (sum == 0) {
                                   setState(() {
-                                    HapticFeedback.lightImpact();
+                                    Vibration.vibrate(duration: 1000);
+                                    //HapticFeedback.lightImpact();
                                     temp = temp + 1;
                                     letter = lett(temp);
 
@@ -616,9 +639,11 @@ print(messages);
                                 print(num4);
                                 print(sum);
                                 speak("correct");
+                                Vibration.vibrate(duration: 200);
                                 if (sum == 0) {
                                   setState(() {
-                                    HapticFeedback.lightImpact();
+                                    Vibration.vibrate(duration: 1000);
+                                    //HapticFeedback.lightImpact();
                                     temp = temp + 1;
 
                                     letter = let(temp);
@@ -660,9 +685,11 @@ print(messages);
                                 print(num2);
                                 print(sum);
                                 speak("correct");
+                                Vibration.vibrate(duration: 200);
                                 if (sum == 0) {
                                   setState(() {
-                                    HapticFeedback.lightImpact();
+                                    Vibration.vibrate(duration: 1000);
+                                    //HapticFeedback.lightImpact();
                                     temp = temp + 1;
 
                                     letter = lett(temp);
@@ -707,9 +734,11 @@ print(messages);
                                 print(num5);
                                 print(sum);
                                 speak("correct");
+                                Vibration.vibrate(duration: 200);
                                 if (sum == 0) {
                                   setState(() {
-                                    HapticFeedback.lightImpact();
+                                    Vibration.vibrate(duration: 1000);
+                                    //HapticFeedback.lightImpact();
                                     temp = temp + 1;
                                     letter = lett(temp);
 
@@ -758,9 +787,11 @@ print(messages);
                                 print(num1);
                                 print(sum);
                                 speak("correct");
+                                Vibration.vibrate(duration: 200);
                                 if (sum == 0) {
                                   setState(() {
-                                    HapticFeedback.lightImpact();
+                                    Vibration.vibrate(duration: 1000);
+                                    //HapticFeedback.lightImpact();
                                     temp = temp + 1;
                                     letter = lett(temp);
                                     num1 = b1(letter);
@@ -800,9 +831,11 @@ print(messages);
                                 num6 = num6 - 1;
                                 sum = sum - 1;
                                 speak("correct");
+                                Vibration.vibrate(duration: 200);
                                 if (sum == 0) {
                                   setState(() {
-                                    HapticFeedback.lightImpact();
+                                    Vibration.vibrate(duration: 1000);
+                                    //HapticFeedback.lightImpact();
                                     temp = temp + 1;
                                     speak(letter);
                                     letter = lett(temp);

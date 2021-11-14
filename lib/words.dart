@@ -100,16 +100,14 @@ class _InfoScreenState extends State<word> {
 
     if(hold.length==num)
     {
-      num=num=0;
-      tempp=tempp+1;
 
+      tempp=tempp+1;
       hold= yourList[tempp];
-      result= hold.split('');
-      speak("The word is "+hold);
       showDialog(
           barrierDismissible: false,
           context: context,
           builder: (BuildContext context) {
+            speak("The word is "+hold);
             return WillPopScope(
               onWillPop: () async => false,
               child:
@@ -118,8 +116,8 @@ class _InfoScreenState extends State<word> {
 
     }
     hold= yourList[tempp];
-    print(hold);
-    result= hold.split('');
+    print("asdwadw$hold");
+    result= word.split('');
     return (result[num]);
     /*
   word= yourList[temp];
