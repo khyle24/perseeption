@@ -64,29 +64,62 @@ class _InfoScreenState extends State<word> {
   List yourList = ["MAN", "GIRL", "BUS","BOY","DOG"];
   String words(int num)
   {
+
+    Future speak(String tlk) async {
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.setPitch(0.8);
+      await flutterTts.setSpeechRate(0.9);
+      await flutterTts.speak(tlk);
+    }
+
+
     var result;
     int temp=0;
     var word;
 
-    if(num==0&&temp==0)
+    if(num==0&&tempp==0)
     {
       yourList.shuffle();
 
       word=yourList.join();
       print(word);
-      hold= yourList[temp];
-      result= word.split('');
+      hold= yourList[tempp];
+
+      result= hold.split('');
       //return (result[num]);
       //  name(hold);
       return (result[num]);
     }
-    hold= yourList[temp];
+    hold= yourList[tempp];
+    print(hold);
     word=yourList.join();
     if(word.length==num)
     {
       return "Done";
     }
-    result= word.split('');
+
+    if(hold.length==num)
+    {
+      num=num=0;
+      tempp=tempp+1;
+
+      hold= yourList[tempp];
+      result= hold.split('');
+      speak("The word is "+hold);
+      showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (BuildContext context) {
+            return WillPopScope(
+              onWillPop: () async => false,
+              child:
+              AdvanceCustomAlert2(text:hold), );
+          });
+
+    }
+    hold= yourList[tempp];
+    print(hold);
+    result= hold.split('');
     return (result[num]);
     /*
   word= yourList[temp];

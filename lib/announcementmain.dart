@@ -5,7 +5,11 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:perseeption/announce.dart';
 import 'package:perseeption/announce_api.dart';
+import 'package:perseeption/notificationservice.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 class announcementmain extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
@@ -22,6 +26,8 @@ class _InfoScreenState extends State<announcementmain> {
    // getData();
     // TODO: implement initState
     super.initState();
+    tz.initializeTimeZones();
+    NotificationService().showNotification(1, "Perseeption", "New Announcement", 10);
     controller.addListener(onScroll);
   }
 
