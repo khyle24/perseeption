@@ -426,6 +426,7 @@ print(messages);
                      IconButton(
                        icon:  Icon(Icons.contact_phone,size:50, color: Color(0xFF36a9e1),semanticLabel: "Contacts"),
                    onPressed: (){
+
                      Navigator.push(context,
                        MaterialPageRoute(builder: (context) => settingsn()),);
                       },

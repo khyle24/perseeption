@@ -111,6 +111,7 @@ class _InfoScreenState extends State<word> {
               numi = words(temp);
               if(numi=="M")
                 {
+
                   num1 = 1;
                   num2 = 0;
                   num3 = 1;
@@ -120,6 +121,7 @@ class _InfoScreenState extends State<word> {
                 }
               if(numi=="G")
               {
+
                 num1 = 1;
                 num2 = 1;
                 num3 = 0;
@@ -129,6 +131,7 @@ class _InfoScreenState extends State<word> {
               }
               if(numi=="B")
               {
+
                 num1 = 1;
                 num2 = 1;
                 num3 = 0;
@@ -144,8 +147,6 @@ class _InfoScreenState extends State<word> {
 
                 // speak("You need to answer is number"+numi);
               });
-
-
 
               speak("The word is "+numi);
               showDialog(

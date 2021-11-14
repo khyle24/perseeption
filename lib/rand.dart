@@ -77,40 +77,58 @@ String number(int num)
   return arr[num];
 }
 
-  List yourList = ["MAN", "GIRL", "BUS"];
-
+  List yourList = ["MAN", "GIRL", "BUS","BOY","DOG"];
 String words(int num)
 {
   var result;
   int temp=0;
   var word;
-
+  var hold;
   if(num==0&&temp==0)
     {
       yourList.shuffle();
-      //int randomIndex = Random().nextInt(yourList.length);
-     word= yourList[temp];
+
+      word=yourList.join();
+      print(word);
+     hold= yourList[temp];
       result= word.split('');
+      //return (result[num]);
+      return (result[num]);
     }
+  hold= yourList[temp];
+  word=yourList.join();
+  if(word.length==num)
+    {
+    return "DONE";
+    }
+  result= word.split('');
+  return (result[num]);
+  /*
   word= yourList[temp];
- result= word.split('');
+  result= word.split('');
   if(result.length==num)
   {
     temp =temp+1;
-   num=0;
+    num=num=0;
   //  word= yourList[temp];
   //  result= word.split('');
-    word= yourList[temp];
+   // word= yourList[temp];
+  //result =result= word.split('');
 
-    result= word.split('');
 
   }
+print("lol$temp");
+  print("adwadwadw$result[num]");
+      word= yourList[temp];
+      result= word.split('');
+      */
 
 
-  word= yourList[temp];
-  result= word.split('');
+ // return (result[num]);
+  //word= yourList[temp];
+ // result= word.split('');
 
-  return (result[num]);
+
   //int randomIndex = Random().nextInt(yourList.length);
   //var element = yourList[_random.nextInt(yourList.length)];
  // yourList[Random().nextInt(yourList.length)];
